@@ -6,10 +6,13 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 
 const menuitems = [
   {
-    title: "Services",
+    title: "Products",
     path: "#",
     children: [
       { title: "Orange Gas", path: "http://www.orangegas.co" },
+
+  { title: "Gottem CLI tool", path: "https://github.com/Utility-Gods/gottem" },
+      { title: "Node Sitemap Generator", path: "https://www.npmjs.com/package/node-sitemap-cli" },
 
       { title: "Caption It Now", path: "http://www.captionitnow.com" },
       { title: "QR Gods", path: "http://www.qrgods.com" },
@@ -29,7 +32,7 @@ const menuitems = [
   },
   {
     title: "Blog",
-    path: "/blog",
+    path: "https://www.orangegas.co/blog",
   },
   {
     title: "Contact",
@@ -80,8 +83,8 @@ const menuitems = [
           }
         </ul>
         <div class="lg:hidden flex items-center mt-3 gap-4">
-          <Link href="#" block size="md">Explore Services</Link>
-          <Link href="#" size="md" block>Sign up</Link>
+          <Link href="www.orangegas.co" block size="md">Explore Products</Link>
+          <Link href="www.orangegas.co" size="md" block>Sign up</Link>
         </div>
       </MenuItems>
     </Astronav>
