@@ -1,12 +1,14 @@
 ---
 import { SEO } from "astro-seo";
 import Footer from "@components/footer.astro";
-import Navbar from "@components/navbar/navbar.astro";
-import "@fontsource-variable/inter/index.css";
+import Navbar from "@components/navbar.astro";
+import "@fontsource/inter";
 
-export interface Props {
+interface Props {
   title: string;
 }
+
+const { title } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
@@ -15,25 +17,27 @@ const resolvedImageWithDomain = new URL(
   Astro.site
 ).toString();
 
-const { title } = Astro.props;
-
 const makeTitle = title
   ? title + " | " + "Utility Gods"
   : "Utility Gods - Creating Value through Services";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/png" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-
-    <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <SEO
-      title={makeTitle}
-      description="Utility Gods is collection of services for the community. Free to use."
+      title={`${title}${title && " | "}Utility Gods`}
+      description="Utility Gods is a software development agency specializing in open-source solutions."
       canonical={canonicalURL}
       twitter={{
         creator: "UtilityGods",
@@ -47,27 +51,53 @@ const makeTitle = title
           title: `UtilityGods - One Stop for all Utility`,
           image: resolvedImageWithDomain,
         },
-       
       }}
     />
+    <title>{title}</title>
   </head>
-  <body>
+  <body class="font-roboto">
     <Navbar />
     <slot />
     <Footer />
     <style is:global>
+      :root {
+        --accent: 136, 58, 234;
+        --accent-light: 224, 204, 250;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+          45deg,
+          rgb(var(--accent)),
+          rgb(var(--accent-light)) 30%,
+          white 60%
+        );
+      }
+      html {
+        font-family: "Roboto", system-ui, sans-serif;
+        background: #fff;
+        background-size: 224px;
+        scroll-behavior: smooth;
+      }
+      /* Add Montserrat for headings */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", system-ui, sans-serif;
+      }
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
       img {
         content-visibility: auto;
       }
 
-      html,body{
-        width:100%;
-        height:100%;
-        margin:0;
-        padding:0;
-
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        padding: 0;
       }
     </style>
   </body>

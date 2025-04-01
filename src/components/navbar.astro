@@ -1,70 +1,99 @@
+---
 import Container from "@components/container.astro";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 
-const pathname = new URL(Astro.request.url).pathname;
-const currentPath = pathname.slice(1); // remove the first "/"
+// Get the current path and remove trailing slash if exists
+const currentPath = Astro.url.pathname.endsWith("/")
+  ? Astro.url.pathname.slice(0, -1)
+  : Astro.url.pathname;
 
 const menuitems = [
   {
     title: "Home",
     path: "",
+    icon: "ph:house-bold",
   },
   {
     title: "About",
     path: "about",
+    icon: "ph:info-bold",
   },
   {
     title: "Services",
     path: "services",
+    icon: "ph:stack-bold",
   },
   {
     title: "Blog",
     path: "blog",
+    icon: "ph:newspaper-bold",
   },
   {
     title: "Contact",
     path: "contact",
+    icon: "ph:envelope-bold",
   },
 ];
+---
 
 <Container>
   <header class="flex flex-col lg:flex-row justify-between items-center my-5">
     <div class="flex w-full lg:w-auto items-center justify-between">
-      <a href="/" class="text-lg flex items-center gap-2">
-        <img src="/logo.png" alt="Utility Gods Logo" class="h-8" />
-        <span class="font-bold text-slate-800">Utility Gods</span>
+      <a
+        href="/"
+        class="text-2xl font-black text-slate-900 flex items-center gap-3">
+        <img
+          src="/logo.png"
+          alt="Utility Gods Logo"
+          class="w-32 object-contain"
+        />
       </a>
       <div class="block lg:hidden">
-        <button id="menu" aria-label="Toggle menu" class="text-gray-800">
+        <button
+          id="menu"
+          aria-label="Toggle menu"
+          class="text-slate-800 hover:text-red-500">
           <Icon name="ph:list-bold" class="w-6 h-6" />
         </button>
       </div>
     </div>
-    <nav>
-      <ul class="flex w-full flex-col lg:w-auto lg:flex-row lg:gap-3">
+    <nav class="hidden w-full lg:w-auto mt-2 lg:flex lg:mt-0" id="navbar">
+      <ul class="flex flex-col lg:flex-row gap-3">
         {
-          menuitems.map((item) => (
-            <li>
-              <a
-                href={`/${item.path}`}
-                class:list={[
-                  "flex lg:px-3 py-2 items-center text-gray-600 hover:text-red-500",
-                  {
-                    "text-red-500 font-medium": currentPath === item.path,
-                    "text-red-500 font-medium": item.path === "" && currentPath === "",
-                  },
-                ]}>
-                {item.title}
-              </a>
-            </li>
-          ))
+          menuitems.map((item) => {
+            const isActive =
+              item.path === ""
+                ? currentPath === "/" || currentPath === ""
+                : currentPath === `/${item.path}`;
+
+            return (
+              <li>
+                <a
+                  href={item.path === "" ? "/" : `/${item.path}`}
+                  class:list={[
+                    "flex lg:px-3 py-2 items-center gap-2 text-slate-600 hover:text-red-500 transition-colors",
+                    {
+                      "text-red-500 font-semibold": isActive,
+                    },
+                  ]}>
+                  <Icon name={item.icon} class="w-4 h-4 lg:hidden" />
+                  <span>{item.title}</span>
+                  {isActive && (
+                    <span class="absolute bottom-0 left-0 w-full h-0.5 bg-red-500 hidden lg:block" />
+                  )}
+                </a>
+              </li>
+            );
+          })
         }
         <li>
           <a
             href="https://github.com/Utility-Gods"
             target="_blank"
-            class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-red-500">
+            class="flex lg:px-3 py-2 items-center gap-2 text-slate-600 hover:text-red-500 transition-colors">
             <Icon name="ph:github-logo-bold" class="w-5 h-5" />
+            <span class="lg:hidden">GitHub</span>
           </a>
         </li>
       </ul>
@@ -72,10 +101,54 @@ const menuitems = [
   </header>
 </Container>
 
+<style>
+  nav li a {
+    position: relative;
+  }
+
+  @media (min-width: 1024px) {
+    nav li a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: theme(colors.red.500);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    nav li a:hover::after,
+    nav li a[aria-current="page"]::after {
+      width: 100%;
+    }
+  }
+</style>
+
 <script>
   const menuButton = document.getElementById("menu");
-  const navbar = document.querySelector("nav");
+  const navbar = document.getElementById("navbar");
+
   menuButton?.addEventListener("click", () => {
     navbar?.classList.toggle("hidden");
   });
-</script> 
+
+  // Close mobile menu when clicking outside
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    if (!target.closest("#menu") && !target.closest("#navbar")) {
+      navbar?.classList.add("hidden");
+    }
+  });
+
+  // Set active state
+  const currentPath = window.location.pathname;
+  const links = document.querySelectorAll("nav a");
+
+  links.forEach((link) => {
+    if (link.getAttribute("href") === currentPath) {
+      link.setAttribute("aria-current", "page");
+    }
+  });
+</script>

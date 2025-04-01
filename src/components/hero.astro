@@ -1,124 +1,146 @@
 ---
-import { Image } from "astro:assets";
-import Link from "@components/ui/link.astro";
+import Container from "@components/container.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<main class="pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="max-w-3xl mx-auto text-center">
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Building the Future with <span class="text-[#e8403a]">Open Source</span>
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl mx-auto">
-      We're a software agency passionate about open source and modern
-      development. From AI to web frameworks, we create tools that empower
-      developers.
-    </p>
-    <div class="mt-6 flex flex-wrap justify-center gap-3">
-      <Link
-        href="https://github.com/Utility-Gods"
-        class="flex gap-1 items-center justify-center bg-[#e8403a] hover:bg-[#e8403a]/90"
-        rel="noopener">
-        <span class="text-white">
+<div class="overflow-hidden bg-gradient-to-b from-slate-50 to-white">
+  <Container>
+    <div
+      class="flex flex-col gap-12 items-center text-center lg:text-left lg:items-start max-w-6xl mx-auto py-20">
+      <!-- Main Heading -->
+      <div class="flex flex-col gap-6 items-center lg:items-start">
+        <h1
+          class="text-4xl lg:text-6xl font-bold lg:tracking-tight text-slate-900">
+          Crafting Digital Excellence with
+          <span class="text-red-500 font-black font-bold">Open Source DNA</span>
+        </h1>
+        <p class="text-xl text-slate-600 max-w-xl font-light leading-relaxed">
+          A boutique software agency that transforms ideas into impactful
+          solutions, powered by open-source innovation and technical excellence.
+        </p>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href="/contact"
+          class="bg-red-500 text-white hover:bg-red-600 px-8 py-4 rounded-lg font-semibold flex items-center gap-2 justify-center transition-all hover:scale-105">
+          Start Your Project
+          <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
+        </a>
+        <a
+          href="https://github.com/Utility-Gods"
+          target="_blank"
+          class="bg-white border-2 border-slate-200 hover:border-slate-300 px-8 py-4 rounded-lg font-semibold flex items-center gap-2 justify-center transition-all hover:scale-105">
           <Icon name="ph:github-logo-bold" class="w-4 h-4" />
-        </span>
-        Explore Our Work
-      </Link>
-      <Link
-        href="https://github.com/Utility-Gods/godship"
-        style="outline"
-        class="flex gap-1 items-center justify-center border-[#e8403a] text-[#e8403a]"
-        rel="noopener">
-        <span class="text-[#e8403a]">
-          <Icon name="ph:code-bold" class="w-4 h-4" />
-        </span>
-        View Website Source
-      </Link>
-    </div>
-  </div>
-
-  <div
-    class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
-    <!-- Tech Stack Card -->
-    <div
-      class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="p-2 bg-[#e8403a]/10 rounded-lg">
-          <Icon name="ph:stack-bold" class="w-6 h-6 text-[#e8403a]" />
-        </span>
-        <h3 class="font-semibold text-lg">Full-Stack Expertise</h3>
+          Explore Our Work
+        </a>
       </div>
-      <p class="text-slate-600">
-        From Go to Python, TypeScript to HTMX - we build scalable solutions
-        across the entire stack.
-      </p>
-    </div>
 
-    <!-- Open Source Card -->
-    <div
-      class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="p-2 bg-[#e8403a]/10 rounded-lg">
-          <Icon name="ph:git-branch-bold" class="w-6 h-6 text-[#e8403a]" />
-        </span>
-        <h3 class="font-semibold text-lg">Open Source First</h3>
+      <!-- Agency Highlights -->
+      <div class="grid md:grid-cols-3 gap-8 w-full">
+        <div
+          class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-all">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="bg-red-100 p-3 rounded-xl">
+              <Icon name="ph:code-bold" class="w-6 h-6 text-red-500" />
+            </span>
+            <h3 class="font-bold text-xl text-slate-900">
+              Technical Excellence
+            </h3>
+          </div>
+          <p class="text-slate-600 leading-relaxed">
+            From Go microservices to Python AI tools, we deliver robust
+            solutions with modern tech stacks and best practices.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-all">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="bg-red-100 p-3 rounded-xl">
+              <Icon name="ph:git-branch-bold" class="w-6 h-6 text-red-500" />
+            </span>
+            <h3 class="font-bold text-xl text-slate-900">Open Source First</h3>
+          </div>
+          <p class="text-slate-600 leading-relaxed">
+            We believe in giving back. Our tools and templates are open source,
+            benefiting the developer community worldwide.
+          </p>
+        </div>
+
+        <div
+          class="bg-white p-8 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-all">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="bg-red-100 p-3 rounded-xl">
+              <Icon name="ph:users-bold" class="w-6 h-6 text-red-500" />
+            </span>
+            <h3 class="font-bold text-xl text-slate-900">Lean & Focused</h3>
+          </div>
+          <p class="text-slate-600 leading-relaxed">
+            A boutique agency approach ensures personalized attention and
+            consistent quality in every project we undertake.
+          </p>
+        </div>
       </div>
-      <p class="text-slate-600">
-        Contributors to Langchain, Svelte ecosystem (shadcn-svelte, melt-ui),
-        and maintainers of various developer tools.
-      </p>
-    </div>
 
-    <!-- AI Integration Card -->
-    <div
-      class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-      <div class="flex items-center gap-3 mb-4">
-        <span class="p-2 bg-[#e8403a]/10 rounded-lg">
-          <Icon name="ph:brain-bold" class="w-6 h-6 text-[#e8403a]" />
-        </span>
-        <h3 class="font-semibold text-lg">AI Innovation</h3>
+      <!-- Tech Stack -->
+      <div class="w-full">
+        <p
+          class="text-sm uppercase tracking-wider font-semibold text-slate-500 mb-6">
+          Powered by Modern Technology
+        </p>
+        <div
+          class="flex flex-wrap gap-8 items-center justify-center lg:justify-start">
+          <span
+            class="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg hover:bg-slate-100 transition-colors">
+            <img src="/icons/golang.svg" alt="Go" class="w-8 h-8" />
+            <span class="text-slate-700 font-medium">Go</span>
+          </span>
+          <span
+            class="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg hover:bg-slate-100 transition-colors">
+            <img src="/icons/python.svg" alt="Python" class="w-8 h-8" />
+            <span class="text-slate-700 font-medium">Python</span>
+          </span>
+          <span
+            class="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg hover:bg-slate-100 transition-colors">
+            <img src="/icons/typescript.svg" alt="TypeScript" class="w-8 h-8" />
+            <span class="text-slate-700 font-medium">TypeScript</span>
+          </span>
+          <span
+            class="flex items-center gap-3 bg-slate-50 px-4 py-2 rounded-lg hover:bg-slate-100 transition-colors">
+            <Icon name="ph:brain-bold" class="w-6 h-6 text-slate-700" />
+            <span class="text-slate-700 font-medium">AI/ML</span>
+          </span>
+        </div>
       </div>
-      <p class="text-slate-600">
-        Pioneering AI integration with tools like TTLM, QR Gods, and advanced
-        image processing solutions.
-      </p>
-    </div>
-  </div>
 
-  <!-- Tech Stack Showcase -->
-  <div class="mt-12">
-    <h3 class="text-lg font-semibold mb-4">Our Tech Stack</h3>
-    <div class="flex flex-wrap gap-6 items-center justify-center">
-      <span class="flex flex-col items-center">
-        <span
-          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
-          <img src="/icons/golang.svg" alt="Go" class="w-8 h-8" />
-        </span>
-        <span class="text-sm mt-2">Go</span>
-      </span>
-      <span class="flex flex-col items-center">
-        <span
-          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
-          <img src="/icons/python.svg" alt="Python" class="w-8 h-8" />
-        </span>
-        <span class="text-sm mt-2">Python</span>
-      </span>
-      <span class="flex flex-col items-center">
-        <span
-          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
-          <img src="/icons/typescript.svg" alt="TypeScript" class="w-8 h-8" />
-        </span>
-        <span class="text-sm mt-2">TypeScript</span>
-      </span>
+      <!-- Trust Indicators -->
+      <div class="grid sm:grid-cols-3 gap-8 w-full">
+        <div class="bg-slate-50 p-6 rounded-xl text-center">
+          <h4 class="text-4xl font-black text-red-500 mb-2">4+</h4>
+          <p class="text-slate-600 font-medium">Core Products</p>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl text-center">
+          <h4 class="text-4xl font-black text-red-500 mb-2">9+</h4>
+          <p class="text-slate-600 font-medium">Open Source Templates</p>
+        </div>
+        <div class="bg-slate-50 p-6 rounded-xl text-center">
+          <h4 class="text-4xl font-black text-red-500 mb-2">100%</h4>
+          <p class="text-slate-600 font-medium">Client Satisfaction</p>
+        </div>
+      </div>
 
-      <span class="flex flex-col items-center">
+      <!-- Verification Badge -->
+      <div
+        class="flex items-center gap-3 bg-green-50 px-6 py-3 rounded-xl text-sm text-green-700 font-medium border border-green-100">
+        <Icon name="ph:shield-check-bold" class="w-5 h-5 text-green-500" />
         <span
-          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
-          <Icon name="ph:brain-bold" class="w-8 h-8" />
-        </span>
-        <span class="text-sm mt-2">AI/ML</span>
-      </span>
+          >Verified Business Entity - <span class="font-mono"
+            >GSTIN: 08ARKPJ7169C1ZL</span
+          ></span
+        >
+      </div>
     </div>
-  </div>
-</main>
+  </Container>
+</div>
