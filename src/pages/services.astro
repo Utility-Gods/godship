@@ -3,6 +3,8 @@ import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
+import { makeIssue } from "astro:schema";
+import { manifest } from "astro:ssr-manifest";
 
 // Calculate counts for each category
 const getCategoryCounts = (services) => {
@@ -31,6 +33,7 @@ const getLanguageCounts = (services) => {
 const categories = [
   { id: "all", name: "All" },
   { id: "cms", name: "CMS" },
+  { id: "saas", name: "SaaS Products" },
   { id: "tools", name: "Developer Tools" },
   { id: "templates", name: "Templates" },
   { id: "open-source", name: "Open Source" },
@@ -42,14 +45,17 @@ const languages = [
   { id: "python", name: "Python", icon: "/icons/python.svg" },
   { id: "typescript", name: "TypeScript", icon: "/icons/typescript.svg" },
   { id: "javascript", name: "JavaScript", icon: "/icons/javascript.svg" },
+  { id: "htmx", name: "HTMX", icon: "/icons/htmx.svg" },
+  { id: "strapi", name: "Strapi", icon: "/icons/strapi.svg" },
 ];
 
-const services = [{
+const services = [
+  {
     title: "OrangeGas - Headless CMS",
     description:
       "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
     category: "cms",
-    languages: ["go", "typescript"],
+    languages: ["typescript", "strapi"],
     icon: "ph:database-bold",
     link: "https://orangegas.co",
     isProduct: true,
@@ -57,9 +63,9 @@ const services = [{
   {
     title: "PhotoShip - Image Processing API",
     description:
-      "Powerful image processing and manipulation tool for developers.",
-    category: "tools",
-    languages: ["python"],
+      "Enterprise-grade OCR and image processing SaaS for e-commerce. Transform product catalogs, extract data from PDFs, and generate custom brochures with AI-powered processing.",
+    category: "saas",
+    languages: ["python", "go", "htmx"],
     icon: "ph:image-bold",
     link: "https://github.com/Utility-Gods/photoship-py",
     isProduct: true,
@@ -67,8 +73,8 @@ const services = [{
   {
     title: "DocuGods",
     description:
-      "AI-powered document helper for government IDs and official documents. Simplifies the process of applying for Aadhar, PAN, Voter ID, and more.",
-    category: "tools",
+      "SaaS platform for automated document processing and verification. Simplifies government ID applications with AI-powered document analysis and validation.",
+    category: "saas",
     languages: ["typescript", "python"],
     icon: "ph:file-text-bold",
     link: "https://docugods.com",
@@ -77,8 +83,8 @@ const services = [{
   {
     title: "PasteViz",
     description:
-      "A modern web application built with Svelte that allows users to generate and embed analytics/visualizations on the fly.",
-    category: "tools",
+      "SaaS analytics platform for instant data visualization. Create, share, and embed beautiful charts and graphs without coding.",
+    category: "saas",
     languages: ["typescript"],
     icon: "ph:chart-line-bold",
     link: "https://pasteviz.vercel.app/",
@@ -87,8 +93,8 @@ const services = [{
   {
     title: "Batch GeoCoding API",
     description:
-      "A powerful Express.js API for batch geocoding addresses. Built with TypeScript, Prisma ORM, and MySQL.",
-    category: "tools",
+      "High-performance geocoding service for bulk address processing. Convert addresses to coordinates at scale with enterprise-grade reliability.",
+    category: "saas",
     languages: ["typescript"],
     icon: "ph:map-pin-bold",
     link: "https://geocoding-api.vercel.app/",
@@ -125,23 +131,23 @@ const services = [{
     title: "Node Sitemap CLI",
     description:
       "A command-line tool for generating sitemaps for your web applications.",
-    category: "tools",
+    category: "open-source",
     languages: ["typescript"],
     icon: "ph:tree-structure-bold",
     link: "https://github.com/Utility-Gods/node-sitemap-cli",
   },
-  
+
   {
     title: "QR Gods - AI QR Code Generator",
     description:
       "Generate beautiful, customizable QR codes for your applications and marketing materials.",
     category: "tools",
-    languages: ["go"],
+    languages: ["typescript"],
     icon: "ph:qr-code-bold",
     link: "https://github.com/Utility-Gods/qr-gen-ai",
     isProduct: true,
   },
- 
+
   {
     title: "Gottem - Developer CLI Tool",
     description: "Command-line tool to streamline development workflows.",
@@ -280,7 +286,7 @@ const languageCounts = getLanguageCounts(services);
       </div>
 
       <!-- Services Grid -->
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           services.map((service) => (
             <a
@@ -319,7 +325,7 @@ const languageCounts = getLanguageCounts(services);
                           src={langInfo.icon}
                           alt={langInfo.name}
                           title={langInfo.name}
-                          class="w-5 h-5"
+                          class="w-6"
                         />
                       )
                     );
