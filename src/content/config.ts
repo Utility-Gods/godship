@@ -17,7 +17,7 @@ const blogCollection = defineCollection({
 });
 
 const teamCollection = defineCollection({
-  type: "data",
+  type: "content",
   schema: z.object({
     draft: z.boolean(),
     name: z.string(),
