@@ -4,11 +4,36 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
+// Calculate counts for each category
+const getCategoryCounts = (services) => {
+  const counts = {
+    all: services.length,
+  };
+  services.forEach((service) => {
+    counts[service.category] = (counts[service.category] || 0) + 1;
+  });
+  return counts;
+};
+
+// Calculate counts for each language
+const getLanguageCounts = (services) => {
+  const counts = {
+    all: services.length,
+  };
+  services.forEach((service) => {
+    service.languages.forEach((lang) => {
+      counts[lang] = (counts[lang] || 0) + 1;
+    });
+  });
+  return counts;
+};
+
 const categories = [
   { id: "all", name: "All" },
   { id: "cms", name: "CMS" },
   { id: "tools", name: "Developer Tools" },
   { id: "templates", name: "Templates" },
+  { id: "open-source", name: "Open Source" },
 ];
 
 const languages = [
@@ -16,9 +41,76 @@ const languages = [
   { id: "go", name: "Go", icon: "/icons/golang.svg" },
   { id: "python", name: "Python", icon: "/icons/python.svg" },
   { id: "typescript", name: "TypeScript", icon: "/icons/typescript.svg" },
+  { id: "javascript", name: "JavaScript", icon: "/icons/javascript.svg" },
 ];
 
 const services = [
+  {
+    title: "DocuGods",
+    description:
+      "AI-powered document helper for government IDs and official documents. Simplifies the process of applying for Aadhar, PAN, Voter ID, and more.",
+    category: "tools",
+    languages: ["typescript", "python"],
+    icon: "ph:file-text-bold",
+    link: "https://docugods.com",
+    isProduct: true,
+  },
+  {
+    title: "PasteViz",
+    description:
+      "A modern web application built with Svelte that allows users to generate and embed analytics/visualizations on the fly.",
+    category: "tools",
+    languages: ["typescript"],
+    icon: "ph:chart-line-bold",
+    link: "https://pasteviz.vercel.app/",
+    isProduct: true,
+  },
+  {
+    title: "Batch GeoCoding API",
+    description:
+      "A powerful Express.js API for batch geocoding addresses. Built with TypeScript, Prisma ORM, and MySQL.",
+    category: "tools",
+    languages: ["typescript"],
+    icon: "ph:map-pin-bold",
+    link: "https://geocoding-api.vercel.app/",
+    isProduct: true,
+  },
+  {
+    title: "Angular-httpshooter",
+    description:
+      "An AngularJS factory that manages HTTP calls asynchronously, ensuring single-threaded communication.",
+    category: "open-source",
+    languages: ["javascript"],
+    icon: "ph:arrows-out-bold",
+    link: "https://www.npmjs.com/package/angular-httpshooter",
+  },
+  {
+    title: "CSS Media All",
+    description:
+      "A comprehensive CSS library with media queries for responsive web design.",
+    category: "open-source",
+    languages: ["javascript"],
+    icon: "ph:device-mobile-bold",
+    link: "https://www.npmjs.com/package/css-media-all",
+  },
+  {
+    title: "Prisma Generator",
+    description:
+      "A powerful tool for generating Prisma schemas with AI assistance.",
+    category: "tools",
+    languages: ["typescript"],
+    icon: "ph:database-bold",
+    link: "https://github.com/siddarthvader/prisma-gen",
+  },
+  {
+    title: "Node Sitemap CLI",
+    description:
+      "A command-line tool for generating sitemaps for your web applications.",
+    category: "tools",
+    languages: ["typescript"],
+    icon: "ph:tree-structure-bold",
+    link: "https://github.com/Utility-Gods/node-sitemap-cli",
+  },
   {
     title: "OrangeGas - Headless CMS",
     description:
@@ -125,15 +217,18 @@ const services = [
     link: "https://github.com/Utility-Gods/py-init-repo",
   },
 ];
+
+const categoryCounts = getCategoryCounts(services);
+const languageCounts = getLanguageCounts(services);
 ---
 
 <Layout title="Services">
   <Container>
     <Sectionhead>
       <Fragment slot="title">Our Services</Fragment>
-      <Fragment slot="desc"
-        >Explore our tools, templates, and solutions</Fragment
-      >
+      <Fragment slot="desc">
+        Explore our {categoryCounts.all} tools, templates, and solutions
+      </Fragment>
     </Sectionhead>
 
     <div class="mt-16 max-w-6xl mx-auto">
@@ -145,10 +240,13 @@ const services = [
             {
               categories.map((category) => (
                 <button
-                  class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white"
+                  class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white inline-flex items-center gap-2"
                   data-category={category.id}
                   data-active={category.id === "all"}>
                   {category.name}
+                  <span class="inline-flex items-center justify-center bg-red-100 text-red-600 rounded-full w-6 h-6 text-xs">
+                    {categoryCounts[category.id] || 0}
+                  </span>
                 </button>
               ))
             }
@@ -168,13 +266,19 @@ const services = [
                       <img src={lang.icon} alt={lang.name} class="w-4 h-4" />
                     )}
                     {lang.name}
+                    <span class="inline-flex items-center justify-center bg-red-100 text-red-600 rounded-full w-6 h-6 text-xs">
+                      {languageCounts[lang.id] || 0}
+                    </span>
                   </button>
                 ) : (
                   <button
-                    class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white"
+                    class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white inline-flex items-center gap-2"
                     data-language={lang.id}
                     data-active={lang.id === "all"}>
                     {lang.name}
+                    <span class="inline-flex items-center justify-center bg-red-100 text-red-600 rounded-full w-6 h-6 text-xs">
+                      {languageCounts[lang.id] || 0}
+                    </span>
                   </button>
                 )
               )

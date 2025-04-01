@@ -3,6 +3,13 @@ import { Icon } from "astro-icon/components";
 
 const features = [
   {
+    title: "DocuGods",
+    description:
+      "AI-powered document helper that simplifies the process of applying for government IDs like Aadhar, PAN, Voter ID, and more.",
+    icon: "ph:file-text-bold",
+    link: "https://docugods.com",
+  },
+  {
     title: "Photoship",
     description:
       "A modern cloud image gallery solution with powerful features. Built with Go and Python for optimal performance and scalability.",
@@ -10,18 +17,32 @@ const features = [
     link: "https://photoship.co",
   },
   {
-    title: "QR Code Generator",
+    title: "OrangeGas",
     description:
-      "AI-powered QR code generation tool that creates beautiful and functional QR codes with advanced customization options.",
-    icon: "ph:qr-code-bold",
-    link: "https://github.com/Utility-Gods/qr-gen-ai",
-  },
-  {
-    title: "Orange Gas",
-    description:
-      "A comprehensive web application built with modern frontend technologies.",
+      "A comprehensive headless CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
     icon: "ph:gas-pump-bold",
     link: "https://orangegas.co",
+  },
+  {
+    title: "PasteViz",
+    description:
+      "A modern web application built with Svelte that allows users to generate and embed analytics/visualizations on the fly.",
+    icon: "ph:chart-line-bold",
+    link: "https://pasteviz.vercel.app/",
+  },
+  {
+    title: "Batch GeoCoding API",
+    description:
+      "A powerful Express.js API for batch geocoding addresses. Built with TypeScript, Prisma ORM, and MySQL.",
+    icon: "ph:map-pin-bold",
+    link: "https://geocoding-api.vercel.app/",
+  },
+  {
+    title: "Angular-httpshooter",
+    description:
+      "An AngularJS factory that manages HTTP calls asynchronously, ensuring single-threaded communication between server and client.",
+    icon: "ph:arrows-out-bold",
+    link: "https://www.npmjs.com/package/angular-httpshooter",
   },
   {
     title: "Go HTMX Templates",
@@ -30,27 +51,13 @@ const features = [
     icon: "ph:code-bold",
     link: "https://github.com/Utility-Gods/go-htmx-templ-echo-air-tailwind",
   },
-  {
-    title: "FastAPI Templates",
-    description:
-      "Python webapp scaffolding with FastAPI, SQLAlchemy, HTMX, and Tailwind CSS for rapid API development.",
-    icon: "ph:terminal-window-bold",
-    link: "https://github.com/Utility-Gods/python-fastapi-sqlchemy-htmx-tailwind",
-  },
-  {
-    title: "Developer Tools",
-    description:
-      "Various utility tools including TTLM (Talk to Language Model), Gottem CLI, and Node.js packages for enhanced development workflow.",
-    icon: "ph:wrench-bold",
-    link: "https://github.com/Utility-Gods",
-  },
 ];
 ---
 
 <div class="mt-16 md:mt-0">
   <h2
     class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-red-500] text-center">
-    Our Projects & Templates
+    Featured Projects
   </h2>
   <p class="text-lg mt-4 text-gray-600 text-center max-w-2xl mx-auto">
     From production applications to developer templates, we create tools and
@@ -78,4 +85,13 @@ const features = [
       </a>
     ))
   }
+</div>
+
+<div class="mt-12 text-center">
+  <a
+    href="/services"
+    class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-500 hover:bg-red-600 md:py-4 md:text-lg md:px-8 transition duration-300">
+    View All Services
+    <Icon name="ph:arrow-right-bold" class="ml-2 w-5 h-5" />
+  </a>
 </div>
