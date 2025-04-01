@@ -1,69 +1,84 @@
 ---
-// @ts-ignore
-import { Icon } from 'astro-iconify';
+import { Icon } from "astro-icon/components";
 
 const features = [
-  // {
-  //   title: "Bring Your Own Framework",
-  //   description:
-  //     "Build your site using React, Svelte, Vue, Preact, web components, or just plain ol' HTML + JavaScript.",
-  //   icon: "bx:bxs-briefcase",
-  // },
-  // {
-  //   title: "100% Static HTML, No JS",
-  //   description:
-  //     "Astro renders your entire page to static HTML, removing all JavaScript from your final build by default.",
-  //   icon: "bx:bxs-window-alt",
-  // },
-  // {
-  //   title: "On-Demand Components",
-  //   description:
-  //     "Need some JS? Astro can automatically hydrate interactive components when they become visible on the page.  ",
-  //   icon: "bx:bxs-data",
-  // },
   {
-    title: "For the Community",
+    title: "Photoship",
     description:
-      "Utility Gods is a project powered by powered by a vision to create a single stop for all your utility services.",
-    icon: "bx:bxs-user",
+      "A modern cloud image gallery solution with powerful features. Built with Go and Python for optimal performance and scalability.",
+    icon: "ph:image-bold",
+    link: "https://photoship.co",
   },
   {
-    title: "Broad Integration",
+    title: "QR Code Generator",
     description:
-      "We provide API for all of our services and help with integrations..",
-    icon: "bx:bxs-bot",
+      "AI-powered QR code generation tool that creates beautiful and functional QR codes with advanced customization options.",
+    icon: "ph:qr-code-bold",
+    link: "https://github.com/Utility-Gods/qr-gen-ai",
   },
   {
-    title: "Always Free",
+    title: "Orange Gas",
     description:
-      "We intend to bring all the services for free to the community.",
-    icon: "bx:bxs-file-find",
+      "A comprehensive web application built with modern frontend technologies.",
+    icon: "ph:gas-pump-bold",
+    link: "https://orangegas.co",
   },
-  
+  {
+    title: "Go HTMX Templates",
+    description:
+      "Production-ready Go templates featuring HTMX, Templ, Echo, and Tailwind CSS for building modern web applications.",
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/go-htmx-templ-echo-air-tailwind",
+  },
+  {
+    title: "FastAPI Templates",
+    description:
+      "Python webapp scaffolding with FastAPI, SQLAlchemy, HTMX, and Tailwind CSS for rapid API development.",
+    icon: "ph:terminal-window-bold",
+    link: "https://github.com/Utility-Gods/python-fastapi-sqlchemy-htmx-tailwind",
+  },
+  {
+    title: "Developer Tools",
+    description:
+      "Various utility tools including TTLM (Talk to Language Model), Gottem CLI, and Node.js packages for enhanced development workflow.",
+    icon: "ph:wrench-bold",
+    link: "https://github.com/Utility-Gods",
+  },
 ];
 ---
 
 <div class="mt-16 md:mt-0">
-  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-sky-600">
-    Services for the ease of community.
+  <div class="flex items-center justify-center mb-8">
+    <img src="/logo.png" alt="Utility Gods Logo" class="h-16" />
+  </div>
+  <h2
+    class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-[#e3382f] text-center">
+    Our Projects & Templates
   </h2>
-  <p class="text-lg mt-4 text-gray-400">
-   Utility gods is a platform that provides services for the ease of community, business and developers.
+  <p class="text-lg mt-4 text-gray-600 text-center max-w-2xl mx-auto">
+    From production applications to developer templates, we create tools and
+    solutions that power modern web development.
   </p>
 </div>
 
 <div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
   {
     features.map((item) => (
-      <div class="flex gap-4 items-start">
-        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
-          <Icon class="text-white" name={item.icon} />
+      <a
+        href={item.link}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex gap-4 items-start hover:scale-105 transition-transform duration-300 group">
+        <div class="mt-1 bg-[#e3382f] rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center group-hover:bg-[#e3382f]/90">
+          <span class="text-white w-4 h-4">
+            <Icon name={item.icon} />
+          </span>
         </div>
         <div>
-          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
-          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+          <h3 class="font-semibold text-lg text-[#e3382f]">{item.title}</h3>
+          <p class="text-slate-600 mt-2 leading-relaxed">{item.description}</p>
         </div>
-      </div>
+      </a>
     ))
   }
 </div>

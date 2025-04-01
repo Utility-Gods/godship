@@ -1,16 +1,22 @@
 ---
 // @ts-ignore
-import { Icon } from 'astro-iconify';
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="mt-24">
   <h2 class="text-center text-slate-500">Works with All Platforms</h2>
   <div class="flex gap-8 md:gap-20 items-center justify-center mt-10 flex-wrap">
-    <Icon class="h-8 md:h-12" name="simple-icons:windows" />
-    <Icon class="h-8 md:h-12" name="simple-icons:linux" />
-    <Icon class="h-8 md:h-14" name="simple-icons:android" />
-    <Icon class="h-8 md:h-16" name="simple-icons:apple" />
-
-
+    <span class="h-8 md:h-12">
+      <Icon name="ph:windows-logo-bold" />
+    </span>
+    <span class="h-8 md:h-12">
+      <Icon name="ph:linux-logo-bold" />
+    </span>
+    <span class="h-8 md:h-14">
+      <Icon name="ph:android-logo-bold" />
+    </span>
+    <span class="h-8 md:h-16">
+      <Icon name="ph:apple-logo-bold" />
+    </span>
   </div>
 </div>

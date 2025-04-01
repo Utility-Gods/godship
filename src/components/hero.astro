@@ -1,51 +1,53 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
+import { Image } from "astro:assets";
 import Link from "@components/ui/link.astro";
-import { Icon } from 'astro-iconify';
+import { Icon } from "astro-icon/components";
 ---
 
 <main
   class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
   <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      aspectRatio="4:3"
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
+    <Image
+      src="/hero.png"
+      alt="Utility Gods Hero"
+      width={600}
+      height={450}
+      format="webp"
+      quality="high"
+      class="w-full"
     />
   </div>
   <div>
     <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter text-sky-600">
-      Creating Value through Utility.
+      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
+      Empowering Developers with <span class="text-[#e3382f]">Modern Tools</span
+      >
     </h1>
     <p class="text-lg mt-4 text-slate-600 max-w-xl">
-     Utility gods is a collection of Services.<wbr /> Built and Distributed to use Freely. We want to create ease of use for the community.
+      We build modern web applications and developer tools that help you create
+      better software, faster. From production apps to developer templates,
+      we've got you covered.
     </p>
     <div class="mt-6 flex flex-col sm:flex-row gap-3">
       <Link
         href="#"
-        href="https://orangegas.co/blog"
-        target="_blank"
-        class="flex gap-1 items-center justify-center bg-sky-600"
+        class="flex gap-1 items-center justify-center bg-[#e3382f] hover:bg-[#e3382f]/90"
         rel="noopener">
-        <Icon class="text-white w-6 h-6" name="gridicons:reblog" />
-
-       Read our Blog
+        <span class="text-white">
+          <Icon name="ph:image-bold" class="w-4 h-4" />
+        </span>
+        View Products
       </Link>
       <Link
         size="lg"
         style="outline"
         rel="noopener"
-        href="https://utilitygods.com/contact"
-        class="flex gap-1 items-center justify-center border-sky-600 text-sky-600"
-        target="_blank">
-        <Icon class="text-sky-600 w-6 h-6" name="gridicons:mail" />
-       Contact Us
+        href="https://github.com/Utility-Gods"
+        class="flex gap-1 items-center justify-center border-[#e3382f] text-[#e3382f]">
+        <span class="text-[#e3382f]">
+          <Icon name="ph:github-logo-bold" class="w-4 h-4" />
+        </span>
+        GitHub
       </Link>
     </div>
   </div>
