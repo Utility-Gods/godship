@@ -44,7 +44,26 @@ const languages = [
   { id: "javascript", name: "JavaScript", icon: "/icons/javascript.svg" },
 ];
 
-const services = [
+const services = [{
+    title: "OrangeGas - Headless CMS",
+    description:
+      "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
+    category: "cms",
+    languages: ["go", "typescript"],
+    icon: "ph:database-bold",
+    link: "https://orangegas.co",
+    isProduct: true,
+  },
+  {
+    title: "PhotoShip - Image Processing API",
+    description:
+      "Powerful image processing and manipulation tool for developers.",
+    category: "tools",
+    languages: ["python"],
+    icon: "ph:image-bold",
+    link: "https://github.com/Utility-Gods/photoship-py",
+    isProduct: true,
+  },
   {
     title: "DocuGods",
     description:
@@ -111,16 +130,7 @@ const services = [
     icon: "ph:tree-structure-bold",
     link: "https://github.com/Utility-Gods/node-sitemap-cli",
   },
-  {
-    title: "OrangeGas - Headless CMS",
-    description:
-      "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
-    category: "cms",
-    languages: ["go", "typescript"],
-    icon: "ph:database-bold",
-    link: "https://orangegas.co",
-    isProduct: true,
-  },
+  
   {
     title: "QR Gods - AI QR Code Generator",
     description:
@@ -131,16 +141,7 @@ const services = [
     link: "https://github.com/Utility-Gods/qr-gen-ai",
     isProduct: true,
   },
-  {
-    title: "PhotoShip - Image Processing API",
-    description:
-      "Powerful image processing and manipulation tool for developers.",
-    category: "tools",
-    languages: ["python"],
-    icon: "ph:image-bold",
-    link: "https://github.com/Utility-Gods/photoship-py",
-    isProduct: true,
-  },
+ 
   {
     title: "Gottem - Developer CLI Tool",
     description: "Command-line tool to streamline development workflows.",
@@ -231,113 +232,120 @@ const languageCounts = getLanguageCounts(services);
       </Fragment>
     </Sectionhead>
 
-    <div class="mt-16 max-w-6xl mx-auto">
+    <div class="mt-8 max-w-6xl mx-auto">
       <!-- Filters -->
-      <div class="flex flex-wrap gap-8 mb-12 justify-center">
-        <div class="space-y-2">
-          <h3 class="text-sm font-medium text-slate-500">Category</h3>
-          <div class="flex flex-wrap gap-2" id="category-filters">
-            {
-              categories.map((category) => (
-                <button
-                  class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white inline-flex items-center gap-2"
-                  data-category={category.id}
-                  data-active={category.id === "all"}>
-                  {category.name}
-                  <span class="inline-flex items-center justify-center bg-red-100 text-red-600 rounded-full w-6 h-6 text-xs">
-                    {categoryCounts[category.id] || 0}
-                  </span>
-                </button>
-              ))
-            }
-          </div>
-        </div>
-        <div class="space-y-2">
-          <h3 class="text-sm font-medium text-slate-500">Language</h3>
-          <div class="flex flex-wrap gap-2" id="language-filters">
-            {
-              languages.map((lang) =>
-                lang.id !== "all" ? (
+      <div
+        class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-8">
+        <div class="flex flex-col sm:flex-row gap-6 justify-center">
+          <div>
+            <h3 class="text-sm font-medium text-gray-500 mb-2">Category</h3>
+            <div class="flex flex-wrap gap-2" id="category-filters">
+              {
+                categories.map((category) => (
                   <button
-                    class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white inline-flex items-center gap-2"
+                    class="px-3 py-1 text-sm rounded-full border border-red-200 text-red-600 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white data-[active=true]:border-red-500 inline-flex items-center gap-1.5"
+                    data-category={category.id}
+                    data-active={category.id === "all"}>
+                    {category.name}
+                    <span class="inline-flex items-center justify-center bg-red-50 text-red-600 rounded-full w-5 h-5 text-xs data-[active=true]:bg-red-400">
+                      {categoryCounts[category.id] || 0}
+                    </span>
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+          <div>
+            <h3 class="text-sm font-medium text-gray-500 mb-2">Language</h3>
+            <div class="flex flex-wrap gap-2" id="language-filters">
+              {
+                languages.map((lang) => (
+                  <button
+                    class="px-3 py-1 text-sm rounded-full border border-red-200 text-red-600 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white data-[active=true]:border-red-500 inline-flex items-center gap-1.5"
                     data-language={lang.id}
                     data-active={lang.id === "all"}>
                     {lang.icon && (
                       <img src={lang.icon} alt={lang.name} class="w-4 h-4" />
                     )}
                     {lang.name}
-                    <span class="inline-flex items-center justify-center bg-red-100 text-red-600 rounded-full w-6 h-6 text-xs">
+                    <span class="inline-flex items-center justify-center bg-red-50 text-red-600 rounded-full w-5 h-5 text-xs data-[active=true]:bg-red-400">
                       {languageCounts[lang.id] || 0}
                     </span>
                   </button>
-                ) : (
-                  <button
-                    class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white inline-flex items-center gap-2"
-                    data-language={lang.id}
-                    data-active={lang.id === "all"}>
-                    {lang.name}
-                    <span class="inline-flex items-center justify-center bg-red-100 text-red-600 rounded-full w-6 h-6 text-xs">
-                      {languageCounts[lang.id] || 0}
-                    </span>
-                  </button>
-                )
-              )
-            }
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Services Grid -->
-      <div class="grid md:grid-cols-2 gap-8" id="services-grid">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
           services.map((service) => (
-            <div
+            <a
+              href={service.link}
+              target="_blank"
+              rel="noopener noreferrer"
               class:list={[
-                "bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow",
-                { "border-2 border-red-100": service.isProduct },
+                "group bg-white p-6 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300",
+                { "ring-1 ring-red-100": service.isProduct },
               ]}
               data-category={service.category}
               data-languages={service.languages.join(",")}>
               <div class="flex items-start justify-between mb-4">
-                <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
-                  <Icon name={service.icon} class="w-6 h-6" />
+                <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-red-50 text-red-500 group-hover:bg-red-100 transition-colors">
+                  <Icon name={service.icon} class="w-5 h-5" />
                 </span>
                 {service.isProduct && (
-                  <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700">
-                    Featured Product
+                  <span class="inline-flex items-center rounded-full bg-red-50 px-2.5 py-0.5 text-xs font-medium text-red-600">
+                    Featured
                   </span>
                 )}
               </div>
-              <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
-              <p class="text-slate-500 mb-4">{service.description}</p>
-              <div class="flex items-center justify-between">
-                <a
-                  href={service.link}
-                  target="_blank"
-                  class="text-red-500 hover:text-red-600 inline-flex items-center gap-1">
-                  Learn more <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
-                </a>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2 group-hover:text-red-600 transition-colors">
+                {service.title}
+              </h3>
+              <p class="text-gray-600 text-sm mb-4 line-clamp-2">
+                {service.description}
+              </p>
+              <div class="flex items-center justify-between mt-auto">
                 <div class="flex gap-2">
                   {service.languages.map((lang) => {
                     const langInfo = languages.find((l) => l.id === lang);
-                    return langInfo?.icon ? (
-                      <img
-                        src={langInfo.icon}
-                        alt={langInfo.name}
-                        title={langInfo.name}
-                        class="w-6 h-6 rounded-full"
-                      />
-                    ) : null;
+                    return (
+                      langInfo?.icon && (
+                        <img
+                          src={langInfo.icon}
+                          alt={langInfo.name}
+                          title={langInfo.name}
+                          class="w-5 h-5"
+                        />
+                      )
+                    );
                   })}
                 </div>
+                <span class="text-red-500 text-sm group-hover:translate-x-1 transition-transform">
+                  Learn more{" "}
+                  <Icon name="ph:arrow-right-bold" class="w-4 h-4 inline" />
+                </span>
               </div>
-            </div>
+            </a>
           ))
         }
       </div>
     </div>
   </Container>
 </Layout>
+
+<style>
+  [data-active="true"] {
+    @apply bg-red-500 text-white border-red-500;
+  }
+  [data-active="true"] span {
+    @apply bg-red-400 text-white;
+  }
+</style>
 
 <script>
   function updateFilters() {
@@ -350,7 +358,7 @@ const languageCounts = getLanguageCounts(services);
         .querySelector('[data-language][data-active="true"]')
         ?.getAttribute("data-language") || "all";
 
-    const services = document.querySelectorAll("#services-grid > div");
+    const services = document.querySelectorAll("#services-grid > a");
 
     services.forEach((service) => {
       const serviceCategory = service.getAttribute("data-category");
