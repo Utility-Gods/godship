@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import { Picture } from "astro:assets";
+import { Icon } from "astro-icon/components";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
@@ -11,52 +11,155 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 });
 ---
 
-<Layout title="About" > 
-  <Container class="h-[70%]">
+<Layout title="About">
+  <Container>
     <Sectionhead>
-      <Fragment slot="title">About</Fragment>
-      <Fragment slot="desc">We are a small passionate team.</Fragment>
+      <Fragment slot="title">About Utility Gods</Fragment>
+      <Fragment slot="desc"
+        >Building developer-first tools and solutions</Fragment
+      >
     </Sectionhead>
 
-    <div class="flex flex-col gap-3 mx-auto max-w-4xl mt-16">
-      <h2 class="font-bold text-3xl text-gray-800">
-        Empowering the world with Utility Gods.
-      </h2>
-      <p class="text-lg leading-relaxed text-slate-500">
-        We're a multi-cultural team from around the world! We come from diverse
-        backgrounds, bringing different personalities, experiences and skills to
-        the job. This is what makes our team so special.
-      </p>
-    </div>
-    <!-- <div class="grid md:grid-cols-3 gap-10 mx-auto max-w-4xl mt-12">
-      {
-        publishedTeamMembers.map((teamMemberEntry) => (
-          <div class="group">
-            <div class="w-full aspect-square">
-              <Picture
-                src={teamMemberEntry.data.avatar.src}
-                alt={teamMemberEntry.data.avatar.alt}
-                sizes="(max-width: 800px) 100vw, 400px"
-                widths={[200, 400]}
-                aspectRatio="1:1"
-                background="#ffffff"
-                fit="cover"
-                position="center"
-                class="w-full rounded-md rounded transition group-hover:-translate-y-1 group-hover:shadow-xl"
-              />
-            </div>
+    <div class="flex flex-col gap-8 mx-auto max-w-4xl mt-16">
+      <div class="text-center">
+        <h2 class="text-4xl font-bold text-gray-800 mb-4">
+          Empowering Developers with Modern Solutions
+        </h2>
+        <p class="text-lg leading-relaxed text-slate-500">
+          From our powerful CMS to production-ready templates, we're building
+          tools that help developers create better software faster.
+        </p>
+      </div>
 
-            <div class="mt-4 text-center">
-              <h2 class="text-lg text-gray-800">
-                {teamMemberEntry.data.name}
-              </h2>
-              <h3 class="text-sm text-slate-500">
-                {teamMemberEntry.data.title}
-              </h3>
+      <!-- Main Products -->
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        <div
+          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-4">
+            <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
+              <Icon name="ph:database-bold" class="w-8 h-8" />
+            </span>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">OrangeGas CMS</h3>
+          <p class="text-slate-500 mb-4">
+            A general-purpose CMS that empowers the way you create and manage
+            content. Build collections, blogs, and rich text content with ease.
+          </p>
+          <a
+            href="https://orangegas.co"
+            class="text-red-500 hover:text-red-600 inline-flex items-center gap-1">
+            Learn more <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
+          </a>
+        </div>
+
+        <div
+          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="mb-4">
+            <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
+              <Icon name="ph:package-bold" class="w-8 h-8" />
+            </span>
+          </div>
+          <h3 class="text-2xl font-semibold mb-3">Developer Tools</h3>
+          <p class="text-slate-500 mb-4">
+            A suite of tools including QR Gods for QR code generation, PhotoShip
+            for image processing, and gottem cli for development workflows.
+          </p>
+          <a
+            href="/services"
+            class="text-red-500 hover:text-red-600 inline-flex items-center gap-1">
+            View all tools <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Template Categories -->
+      <div class="mt-16">
+        <h3 class="text-2xl font-bold text-center mb-8">
+          Development Templates
+        </h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div
+            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="mb-4">
+              <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
+                <Icon name="ph:code-bold" class="w-6 h-6" />
+              </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Web Templates</h3>
+            <p class="text-slate-500">
+              Modern templates for Astro, SvelteKit, and SolidJS with Tailwind
+              and best practices built-in.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="mb-4">
+              <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
+                <Icon name="ph:terminal-window-bold" class="w-6 h-6" />
+              </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Backend Templates</h3>
+            <p class="text-slate-500">
+              FastAPI, Go Echo, and HTMX templates with modern stack
+              integrations.
+            </p>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            <div class="mb-4">
+              <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
+                <Icon name="ph:brain-bold" class="w-6 h-6" />
+              </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Full-Stack Starters</h3>
+            <p class="text-slate-500">
+              Complete setups with databases, authentication, and modern UI
+              frameworks.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- GitHub Stats -->
+      <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold mb-6">Our Impact</h3>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl font-bold text-red-500 mb-2">9</div>
+            <div class="text-slate-500">Template Repositories</div>
+          </div>
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl font-bold text-red-500 mb-2">4</div>
+            <div class="text-slate-500">Core Products</div>
+            <div class="text-sm text-slate-400 mt-1">
+              OrangeGas, gottem cli, QR Gods, PhotoShip
             </div>
           </div>
-        ))
-      }
-    </div> -->
+          <div class="bg-white p-6 rounded-xl shadow-sm">
+            <div class="text-3xl font-bold text-red-500 mb-2">100%</div>
+            <div class="text-slate-500">Open Source</div>
+            <div class="text-sm text-slate-400 mt-1">MIT & GPL Licensed</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <div class="mt-16 text-center flex gap-4 justify-center">
+        <a
+          href="/services"
+          class="inline-flex items-center gap-2 px-6 py-3 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors">
+          <Icon name="ph:rocket-bold" class="w-5 h-5" />
+          Explore Our Services
+        </a>
+        <a
+          href="https://github.com/Utility-Gods"
+          class="inline-flex items-center gap-2 px-6 py-3 text-red-500 border-2 border-red-500 rounded-lg hover:bg-red-50 transition-colors">
+          <Icon name="ph:github-logo-bold" class="w-5 h-5" />
+          View Templates
+        </a>
+      </div>
+    </div>
   </Container>
 </Layout>

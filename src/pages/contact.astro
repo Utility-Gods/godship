@@ -3,41 +3,147 @@ import Contactform from "@components/contactform.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 import Layout from "@layouts/Layout.astro";
-import { Icon } from 'astro-iconify';
+import { Icon } from "astro-icon/components";
 ---
 
 <Layout title="Contact">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">Contact US</Fragment>
-      <Fragment slot="desc">We are a here to help.</Fragment>
+      <Fragment slot="title">Contact Us</Fragment>
+      <Fragment slot="desc">We'd love to hear from you!</Fragment>
     </Sectionhead>
 
     <div class="grid md:grid-cols-2 gap-10 mx-auto max-w-4xl mt-16">
-      <div>
-        <h2 class="font-medium text-2xl text-gray-800">Contact Utility Gods</h2>
-        <p class="text-lg leading-relaxed text-slate-500 mt-3">
-          Have something to say? We are here to help. Fill up the form or send
-          email or call phone.
-        </p>
-        <div class="mt-5">
-          <div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:map-marker" />
-            <span>Rajasthan, India</span>
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:envelope" /><a
-              href="mailto:contact@utilitygods.com"
-              >contact@utilitygods.com</a
-            >
-          </div><div class="flex items-center mt-2 space-x-2 text-gray-600">
-            <Icon class="text-gray-400 w-4 h-4" name="uil:phone" /><a
-              href="tel:+91 960 232 8157">+91 960 232 8157</a
-            >
+      <div class="space-y-8">
+        <div>
+          <h2 class="font-medium text-2xl text-gray-800">Get in Touch</h2>
+          <p class="text-lg leading-relaxed text-slate-500 mt-3">
+            Whether you have a question about our services, need technical
+            support, or just want to share your experience, our team is here to
+            help.
+          </p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+            <h3 class="font-medium text-gray-800 mb-3">Contact Details</h3>
+            <div class="space-y-3">
+              <div class="flex items-start space-x-3 text-gray-600">
+                <Icon
+                  name="ph:envelope-bold"
+                  class="w-5 h-5 mt-1 text-red-500"
+                />
+                <div>
+                  <p class="font-medium">Email</p>
+                  <a
+                    href="mailto:admin@utilitygods.in"
+                    class="hover:text-red-500">admin@utilitygods.in</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start space-x-3 text-gray-600">
+                <Icon name="ph:phone-bold" class="w-5 h-5 mt-1 text-red-500" />
+                <div>
+                  <p class="font-medium">Phone</p>
+                  <a href="tel:+919602328157" class="hover:text-red-500"
+                    >+91 960 232 8157</a
+                  >
+                </div>
+              </div>
+              <div class="flex items-start space-x-3 text-gray-600">
+                <Icon
+                  name="ph:map-pin-bold"
+                  class="w-5 h-5 mt-1 text-red-500"
+                />
+                <div>
+                  <p class="font-medium">Address</p>
+                  <p class="text-sm">
+                    65, Sharda Enclave, Mohanpura,<br />Jaipur, Rajasthan
+                    302029, India
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+            <h3 class="font-medium text-gray-800 mb-3">Business Hours</h3>
+            <div class="space-y-2 text-gray-600">
+              <div class="flex justify-between">
+                <span>Monday - Friday</span>
+                <span>9:00 AM - 6:00 PM (IST)</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Saturday</span>
+                <span>10:00 AM - 4:00 PM (IST)</span>
+              </div>
+              <div class="flex justify-between text-red-500">
+                <span>Sunday</span>
+                <span>Closed</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+            <h3 class="font-medium text-gray-800 mb-3">Business Details</h3>
+            <div class="space-y-2 text-gray-600 text-sm">
+              <div class="flex justify-between">
+                <span class="font-medium">Trade Name</span>
+                <span>Utility Gods</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-medium">Business Type</span>
+                <span>Proprietary</span>
+              </div>
+              <div class="flex justify-between">
+                <span class="font-medium">GSTIN</span>
+                <span class="font-mono">08ARKPJ7169C1ZL</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-white p-5 rounded-lg shadow-sm border border-gray-200">
+            <h3 class="font-medium text-gray-800 mb-3">Connect With Us</h3>
+            <div class="flex gap-4">
+              <a
+                href="https://github.com/Utility-Gods"
+                target="_blank"
+                class="bg-slate-100 p-2 rounded-lg hover:bg-slate-200 transition-colors">
+                <Icon
+                  name="ph:github-logo-bold"
+                  class="w-5 h-5 text-gray-700"
+                />
+              </a>
+              <a
+                href="https://twitter.com/UtilityGods"
+                target="_blank"
+                class="bg-slate-100 p-2 rounded-lg hover:bg-slate-200 transition-colors">
+                <Icon
+                  name="ph:twitter-logo-bold"
+                  class="w-5 h-5 text-gray-700"
+                />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/utility-gods"
+                target="_blank"
+                class="bg-slate-100 p-2 rounded-lg hover:bg-slate-200 transition-colors">
+                <Icon
+                  name="ph:linkedin-logo-bold"
+                  class="w-5 h-5 text-gray-700"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
+
       <div>
-        <Contactform />
+        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-200">
+          <h2 class="font-medium text-2xl text-gray-800 mb-4">
+            Send Us a Message
+          </h2>
+          <Contactform />
+        </div>
       </div>
     </div>
   </Container>

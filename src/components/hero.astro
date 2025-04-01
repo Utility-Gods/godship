@@ -4,51 +4,121 @@ import Link from "@components/ui/link.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Image
-      src="/hero.png"
-      alt="Utility Gods Hero"
-      width={600}
-      height={450}
-      format="webp"
-      quality="high"
-      class="w-full"
-    />
-  </div>
-  <div>
+<main class="pt-16 pb-8 md:pt-12 md:pb-24">
+  <div class="max-w-3xl mx-auto text-center">
     <h1
       class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Empowering Developers with <span class="text-[#e3382f]">Modern Tools</span
-      >
+      Building the Future with <span class="text-[#e8403a]">Open Source</span>
     </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      We build modern web applications and developer tools that help you create
-      better software, faster. From production apps to developer templates,
-      we've got you covered.
+    <p class="text-lg mt-4 text-slate-600 max-w-xl mx-auto">
+      We're a software agency passionate about open source and modern
+      development. From AI to web frameworks, we create tools that empower
+      developers.
     </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
+    <div class="mt-6 flex flex-wrap justify-center gap-3">
       <Link
-        href="#"
-        class="flex gap-1 items-center justify-center bg-[#e3382f] hover:bg-[#e3382f]/90"
+        href="https://github.com/Utility-Gods"
+        class="flex gap-1 items-center justify-center bg-[#e8403a] hover:bg-[#e8403a]/90"
         rel="noopener">
         <span class="text-white">
-          <Icon name="ph:image-bold" class="w-4 h-4" />
-        </span>
-        View Products
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://github.com/Utility-Gods"
-        class="flex gap-1 items-center justify-center border-[#e3382f] text-[#e3382f]">
-        <span class="text-[#e3382f]">
           <Icon name="ph:github-logo-bold" class="w-4 h-4" />
         </span>
-        GitHub
+        Explore Our Work
       </Link>
+      <Link
+        href="https://github.com/Utility-Gods/godship"
+        style="outline"
+        class="flex gap-1 items-center justify-center border-[#e8403a] text-[#e8403a]"
+        rel="noopener">
+        <span class="text-[#e8403a]">
+          <Icon name="ph:code-bold" class="w-4 h-4" />
+        </span>
+        View Website Source
+      </Link>
+    </div>
+  </div>
+
+  <div
+    class="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto px-4">
+    <!-- Tech Stack Card -->
+    <div
+      class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="p-2 bg-[#e8403a]/10 rounded-lg">
+          <Icon name="ph:stack-bold" class="w-6 h-6 text-[#e8403a]" />
+        </span>
+        <h3 class="font-semibold text-lg">Full-Stack Expertise</h3>
+      </div>
+      <p class="text-slate-600">
+        From Go to Python, TypeScript to HTMX - we build scalable solutions
+        across the entire stack.
+      </p>
+    </div>
+
+    <!-- Open Source Card -->
+    <div
+      class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="p-2 bg-[#e8403a]/10 rounded-lg">
+          <Icon name="ph:git-branch-bold" class="w-6 h-6 text-[#e8403a]" />
+        </span>
+        <h3 class="font-semibold text-lg">Open Source First</h3>
+      </div>
+      <p class="text-slate-600">
+        Contributors to Langchain, Svelte ecosystem (shadcn-svelte, melt-ui),
+        and maintainers of various developer tools.
+      </p>
+    </div>
+
+    <!-- AI Integration Card -->
+    <div
+      class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="p-2 bg-[#e8403a]/10 rounded-lg">
+          <Icon name="ph:brain-bold" class="w-6 h-6 text-[#e8403a]" />
+        </span>
+        <h3 class="font-semibold text-lg">AI Innovation</h3>
+      </div>
+      <p class="text-slate-600">
+        Pioneering AI integration with tools like TTLM, QR Gods, and advanced
+        image processing solutions.
+      </p>
+    </div>
+  </div>
+
+  <!-- Tech Stack Showcase -->
+  <div class="mt-12">
+    <h3 class="text-lg font-semibold mb-4">Our Tech Stack</h3>
+    <div class="flex flex-wrap gap-6 items-center justify-center">
+      <span class="flex flex-col items-center">
+        <span
+          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <img src="/icons/golang.svg" alt="Go" class="w-8 h-8" />
+        </span>
+        <span class="text-sm mt-2">Go</span>
+      </span>
+      <span class="flex flex-col items-center">
+        <span
+          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <img src="/icons/python.svg" alt="Python" class="w-8 h-8" />
+        </span>
+        <span class="text-sm mt-2">Python</span>
+      </span>
+      <span class="flex flex-col items-center">
+        <span
+          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <img src="/icons/typescript.svg" alt="TypeScript" class="w-8 h-8" />
+        </span>
+        <span class="text-sm mt-2">TypeScript</span>
+      </span>
+
+      <span class="flex flex-col items-center">
+        <span
+          class="w-12 h-12 flex items-center justify-center bg-white/10 rounded-lg hover:bg-white/20 transition-colors">
+          <Icon name="ph:brain-bold" class="w-8 h-8" />
+        </span>
+        <span class="text-sm mt-2">AI/ML</span>
+      </span>
     </div>
   </div>
 </main>

@@ -1,0 +1,290 @@
+---
+import { Icon } from "astro-icon/components";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+
+const categories = [
+  { id: "all", name: "All" },
+  { id: "cms", name: "CMS" },
+  { id: "tools", name: "Developer Tools" },
+  { id: "templates", name: "Templates" },
+];
+
+const languages = [
+  { id: "all", name: "All" },
+  { id: "go", name: "Go", icon: "/icons/golang.svg" },
+  { id: "python", name: "Python", icon: "/icons/python.svg" },
+  { id: "typescript", name: "TypeScript", icon: "/icons/typescript.svg" },
+];
+
+const services = [
+  {
+    title: "OrangeGas - Headless CMS",
+    description:
+      "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
+    category: "cms",
+    languages: ["go", "typescript"],
+    icon: "ph:database-bold",
+    link: "https://orangegas.co",
+    isProduct: true,
+  },
+  {
+    title: "QR Gods - AI QR Code Generator",
+    description:
+      "Generate beautiful, customizable QR codes for your applications and marketing materials.",
+    category: "tools",
+    languages: ["go"],
+    icon: "ph:qr-code-bold",
+    link: "https://github.com/Utility-Gods/qr-gen-ai",
+    isProduct: true,
+  },
+  {
+    title: "PhotoShip - Image Processing API",
+    description:
+      "Powerful image processing and manipulation tool for developers.",
+    category: "tools",
+    languages: ["python"],
+    icon: "ph:image-bold",
+    link: "https://github.com/Utility-Gods/photoship-py",
+    isProduct: true,
+  },
+  {
+    title: "Gottem - Developer CLI Tool",
+    description: "Command-line tool to streamline development workflows.",
+    category: "tools",
+    languages: ["go"],
+    icon: "ph:terminal-window-bold",
+    link: "https://github.com/Utility-Gods/gottem",
+    isProduct: true,
+  },
+  {
+    title: "Modern Astro Website Starter",
+    description: "Modern website template built with Astro and TailwindCSS.",
+    category: "templates",
+    languages: ["typescript"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/godship",
+  },
+  {
+    title: "FastAPI HTMX Full-Stack Boilerplate",
+    description: "Full-stack template with FastAPI, HTMX, and TailwindCSS.",
+    category: "templates",
+    languages: ["python"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/python-htmx-postgres-template",
+  },
+  {
+    title: "Go Echo HTMX Starter Kit",
+    description:
+      "Backend template using Go Echo framework with HTMX integration.",
+    category: "templates",
+    languages: ["go"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/go-htmx-templ-echo-air",
+  },
+  {
+    title: "SvelteKit shadcn Starter Kit",
+    description: "SvelteKit template with Tailwind and shadcn-svelte.",
+    category: "templates",
+    languages: ["typescript"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/sveltekit-starter",
+  },
+  {
+    title: "FastAPI SQLAlchemy Full-Stack Kit",
+    description:
+      "Scaffolding for Python webapp API using FastAPI, Tailwind, SQLAlchemy, Alembic, and Pydantic.",
+    category: "templates",
+    languages: ["python"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/python-fastapi-sqlchemy-htmx-tailwind",
+  },
+  {
+    title: "Claude Source Code Explorer",
+    description: "Claude code full original source code from source maps.",
+    category: "tools",
+    languages: ["typescript"],
+    icon: "ph:brain-bold",
+    link: "https://github.com/Utility-Gods/claude-code",
+  },
+  {
+    title: "Python HTMX Postgres Stack",
+    description: "Python HTMX Tailwind Jinja Postgres Alembic template.",
+    category: "templates",
+    languages: ["python"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/python-htmx-postgres-template",
+  },
+  {
+    title: "FastAPI Quick Start Template",
+    description: "Scaffolding for API using FastAPI and Uvicorn.",
+    category: "templates",
+    languages: ["python"],
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/py-init-repo",
+  },
+];
+---
+
+<Layout title="Services">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Our Services</Fragment>
+      <Fragment slot="desc"
+        >Explore our tools, templates, and solutions</Fragment
+      >
+    </Sectionhead>
+
+    <div class="mt-16 max-w-6xl mx-auto">
+      <!-- Filters -->
+      <div class="flex flex-wrap gap-8 mb-12 justify-center">
+        <div class="space-y-2">
+          <h3 class="text-sm font-medium text-slate-500">Category</h3>
+          <div class="flex flex-wrap gap-2" id="category-filters">
+            {
+              categories.map((category) => (
+                <button
+                  class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white"
+                  data-category={category.id}
+                  data-active={category.id === "all"}>
+                  {category.name}
+                </button>
+              ))
+            }
+          </div>
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-sm font-medium text-slate-500">Language</h3>
+          <div class="flex flex-wrap gap-2" id="language-filters">
+            {
+              languages.map((lang) =>
+                lang.id !== "all" ? (
+                  <button
+                    class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white inline-flex items-center gap-2"
+                    data-language={lang.id}
+                    data-active={lang.id === "all"}>
+                    {lang.icon && (
+                      <img src={lang.icon} alt={lang.name} class="w-4 h-4" />
+                    )}
+                    {lang.name}
+                  </button>
+                ) : (
+                  <button
+                    class="px-4 py-2 text-sm rounded-full border-2 border-red-500 text-red-500 hover:bg-red-50 transition-colors data-[active=true]:bg-red-500 data-[active=true]:text-white"
+                    data-language={lang.id}
+                    data-active={lang.id === "all"}>
+                    {lang.name}
+                  </button>
+                )
+              )
+            }
+          </div>
+        </div>
+      </div>
+
+      <!-- Services Grid -->
+      <div class="grid md:grid-cols-2 gap-8" id="services-grid">
+        {
+          services.map((service) => (
+            <div
+              class:list={[
+                "bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow",
+                { "border-2 border-red-100": service.isProduct },
+              ]}
+              data-category={service.category}
+              data-languages={service.languages.join(",")}>
+              <div class="flex items-start justify-between mb-4">
+                <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
+                  <Icon name={service.icon} class="w-6 h-6" />
+                </span>
+                {service.isProduct && (
+                  <span class="inline-flex items-center rounded-full bg-red-50 px-2 py-1 text-xs font-medium text-red-700">
+                    Featured Product
+                  </span>
+                )}
+              </div>
+              <h3 class="text-xl font-semibold mb-2">{service.title}</h3>
+              <p class="text-slate-500 mb-4">{service.description}</p>
+              <div class="flex items-center justify-between">
+                <a
+                  href={service.link}
+                  target="_blank"
+                  class="text-red-500 hover:text-red-600 inline-flex items-center gap-1">
+                  Learn more <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
+                </a>
+                <div class="flex gap-2">
+                  {service.languages.map((lang) => {
+                    const langInfo = languages.find((l) => l.id === lang);
+                    return langInfo?.icon ? (
+                      <img
+                        src={langInfo.icon}
+                        alt={langInfo.name}
+                        title={langInfo.name}
+                        class="w-6 h-6 rounded-full"
+                      />
+                    ) : null;
+                  })}
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </Container>
+</Layout>
+
+<script>
+  function updateFilters() {
+    const categoryFilter =
+      document
+        .querySelector('[data-category][data-active="true"]')
+        ?.getAttribute("data-category") || "all";
+    const languageFilter =
+      document
+        .querySelector('[data-language][data-active="true"]')
+        ?.getAttribute("data-language") || "all";
+
+    const services = document.querySelectorAll("#services-grid > div");
+
+    services.forEach((service) => {
+      const serviceCategory = service.getAttribute("data-category");
+      const serviceLanguages =
+        service.getAttribute("data-languages")?.split(",") || [];
+
+      const matchesCategory =
+        categoryFilter === "all" || serviceCategory === categoryFilter;
+      const matchesLanguage =
+        languageFilter === "all" || serviceLanguages.includes(languageFilter);
+
+      if (matchesCategory && matchesLanguage) {
+        service.classList.remove("hidden");
+      } else {
+        service.classList.add("hidden");
+      }
+    });
+  }
+
+  // Set up category filter buttons
+  document.querySelectorAll("#category-filters button").forEach((button) => {
+    button.addEventListener("click", () => {
+      document
+        .querySelectorAll("#category-filters button")
+        .forEach((btn) => btn.setAttribute("data-active", "false"));
+      button.setAttribute("data-active", "true");
+      updateFilters();
+    });
+  });
+
+  // Set up language filter buttons
+  document.querySelectorAll("#language-filters button").forEach((button) => {
+    button.addEventListener("click", () => {
+      document
+        .querySelectorAll("#language-filters button")
+        .forEach((btn) => btn.setAttribute("data-active", "false"));
+      button.setAttribute("data-active", "true");
+      updateFilters();
+    });
+  });
+</script>

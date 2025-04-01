@@ -1,0 +1,81 @@
+import Container from "@components/container.astro";
+import { Icon } from "astro-icon/components";
+
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+
+const menuitems = [
+  {
+    title: "Home",
+    path: "",
+  },
+  {
+    title: "About",
+    path: "about",
+  },
+  {
+    title: "Services",
+    path: "services",
+  },
+  {
+    title: "Blog",
+    path: "blog",
+  },
+  {
+    title: "Contact",
+    path: "contact",
+  },
+];
+
+<Container>
+  <header class="flex flex-col lg:flex-row justify-between items-center my-5">
+    <div class="flex w-full lg:w-auto items-center justify-between">
+      <a href="/" class="text-lg flex items-center gap-2">
+        <img src="/logo.png" alt="Utility Gods Logo" class="h-8" />
+        <span class="font-bold text-slate-800">Utility Gods</span>
+      </a>
+      <div class="block lg:hidden">
+        <button id="menu" aria-label="Toggle menu" class="text-gray-800">
+          <Icon name="ph:list-bold" class="w-6 h-6" />
+        </button>
+      </div>
+    </div>
+    <nav>
+      <ul class="flex w-full flex-col lg:w-auto lg:flex-row lg:gap-3">
+        {
+          menuitems.map((item) => (
+            <li>
+              <a
+                href={`/${item.path}`}
+                class:list={[
+                  "flex lg:px-3 py-2 items-center text-gray-600 hover:text-red-500",
+                  {
+                    "text-red-500 font-medium": currentPath === item.path,
+                    "text-red-500 font-medium": item.path === "" && currentPath === "",
+                  },
+                ]}>
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a
+            href="https://github.com/Utility-Gods"
+            target="_blank"
+            class="flex lg:px-3 py-2 items-center text-gray-600 hover:text-red-500">
+            <Icon name="ph:github-logo-bold" class="w-5 h-5" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+</Container>
+
+<script>
+  const menuButton = document.getElementById("menu");
+  const navbar = document.querySelector("nav");
+  menuButton?.addEventListener("click", () => {
+    navbar?.classList.toggle("hidden");
+  });
+</script> 

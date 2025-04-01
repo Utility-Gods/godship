@@ -44,11 +44,7 @@ const menuitems = [
     <Astronav>
       <div class="flex w-full lg:w-auto items-center justify-between">
         <a href="/" class="flex items-center gap-3">
-          <img src="/logo.png" alt="Utility Gods Logo" class="h-10" />
-          <span class="text-xl">
-            <span class="font-bold text-[#e3382f]">Utility</span>
-            <span class="text-[#e3382f]/80">Gods</span>
-          </span>
+          <img src="/logo.png" alt="Utility Gods Logo" class="h-24" />
         </a>
         <div class="block lg:hidden">
           <MenuIcon class="w-4 h-4 text-gray-800" />
@@ -72,7 +68,7 @@ const menuitems = [
                     <a
                       href={item.path}
                       target="_blank"
-                      class="flex lg:px-3 py-2 text-[#e3382f] hover:text-gray-900">
+                      class="flex lg:px-3 py-2 text-[#e8403a] hover:text-gray-900">
                       {item.title}
                     </a>
                   </li>
@@ -86,21 +82,23 @@ const menuitems = [
             href="www.orangegas.co"
             block
             size="md"
-            class="bg-[#e3382f] hover:bg-[#e3382f]/90">Explore Products</Link
+            class="bg-[#e8403a] hover:bg-[#e8403a]/90">Explore Products</Link
           >
           <Link
             href="www.orangegas.co"
             size="md"
             block
-            class="border-[#e3382f] text-[#e3382f]">Sign up</Link
+            class="border-[#e8403a] text-[#e8403a]">Sign up</Link
           >
         </div>
       </MenuItems>
     </Astronav>
     <div>
       <div class="hidden lg:flex items-center gap-4">
-        <Link href="#" size="md" class="bg-[#e3382f] hover:bg-[#e3382f]/90"
-          >Explore Services</Link
+        <Link
+          href="/services"
+          size="md"
+          class="bg-[#e8403a] hover:bg-[#e8403a]/90">Explore Services</Link
         >
       </div>
     </div>
