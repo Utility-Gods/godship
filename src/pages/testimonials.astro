@@ -50,11 +50,21 @@ const teamMembers = [
     name: "Siddharth J.",
     title: "Top Rated Plus",
     image: "/team/sid.jpeg",
-    badges: ["100% Job Success", "Top Rated Plus"],
+    badges: ["100% Job Success", "Top Rated Plus", "Rising Talent"],
+    description:
+      "Full Stack Developer & AI Engineer with expertise in building scalable web applications and AI-powered solutions. Specializes in React, Node.js, Python, and modern development frameworks.",
+    upworkProfile: "https://www.upwork.com/freelancers/~016fec88e43102b929",
+    achievements: [
+      "Completed 6+ enterprise projects with 100% success rate",
+      "Maintained perfect 5-star client satisfaction",
+      "Expertise in AI/ML integration and cloud architecture",
+      "Strong background in system design and optimization",
+    ],
   },
 ];
 
 const companyInfo = {
+  name: "UtilityGods",
   size: "2-10 workers",
   founded: "2023",
   clientFocus: [
@@ -65,6 +75,48 @@ const companyInfo = {
   ],
   languages: ["English: Fluent", "Hindi: Native or Bilingual"],
   location: "Jaipur, India",
+  upworkProfile: "https://www.upwork.com/agencies/utilitygods/",
+  description:
+    "UtilityGods is your go-to platform for streamlined services that make life easier for communities, businesses, and developers alike. Powered by a vision to be a one-stop utility hub, we offer a broad range of APIs and integrations that work seamlessly across all platforms. Committed to delivering value, our services are always free, embodying our dedication to community ease and accessibility.",
+  specializations: [
+    "Full-stack Development",
+    "AI/ML Integration",
+    "Cloud Architecture",
+    "System Design",
+    "API Development",
+    "DevOps & Automation",
+  ],
+};
+
+const actionButtons = {
+  agency: [
+    {
+      text: "View Agency Profile",
+      href: "https://www.upwork.com/agencies/utilitygods/",
+      icon: "ph:buildings-bold",
+      primary: true,
+    },
+    {
+      text: "Contact Us",
+      href: "/contact",
+      icon: "ph:envelope-simple-bold",
+      primary: false,
+    },
+  ],
+  freelancer: [
+    {
+      text: "View Full Profile",
+      href: "https://www.upwork.com/freelancers/~016fec88e43102b929",
+      icon: "ph:user-bold",
+      primary: true,
+    },
+    {
+      text: "Read Blog",
+      href: "blog",
+      icon: "ph:folder-simple-bold",
+      primary: false,
+    },
+  ],
 };
 ---
 
@@ -80,20 +132,42 @@ const companyInfo = {
     <!-- Upwork Overview -->
     <div class="mt-16">
       <div class="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-        <div class="flex items-center gap-4 mb-8">
-          <img src="/upwork-logo.svg" alt="Upwork" class="h-8" />
-          <div class="text-xl font-semibold text-gray-800">
-            Top Rated Plus Agency
+        <div
+          class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+          <a
+            href={companyInfo.upworkProfile}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-4 hover:opacity-80 transition-opacity">
+            <img src="/upwork-logo.svg" alt="Upwork" class="h-8" />
+            <div class="text-xl font-semibold text-gray-800">
+              Top Rated Plus Agency
+            </div>
+          </a>
+          <div class="flex gap-3">
+            {
+              actionButtons.agency.map((button) => (
+                <a
+                  href={button.href}
+                  target={button.href.startsWith("http") ? "_blank" : "_self"}
+                  rel={
+                    button.href.startsWith("http") ? "noopener noreferrer" : ""
+                  }
+                  class={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                    button.primary
+                      ? "bg-red-600 text-white hover:bg-red-700"
+                      : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                  }`}>
+                  <Icon name={button.icon} class="w-5 h-5" />
+                  <span>{button.text}</span>
+                </a>
+              ))
+            }
           </div>
         </div>
 
         <p class="text-gray-600 mb-8">
-          UtilityGods is your go-to platform for streamlined services that make
-          life easier for communities, businesses, and developers alike. Powered
-          by a vision to be a one-stop utility hub, we offer a broad range of
-          APIs and integrations that work seamlessly across all platforms.
-          Committed to delivering value, our services are always free, embodying
-          our dedication to community ease and accessibility.
+          {companyInfo.description}
         </p>
 
         <!-- Stats Grid -->
@@ -111,6 +185,24 @@ const companyInfo = {
               </div>
             ))
           }
+        </div>
+
+        <!-- Specializations -->
+        <div class="mb-12">
+          <h3 class="text-lg font-semibold mb-4">Our Specializations</h3>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {
+              companyInfo.specializations.map((spec) => (
+                <div class="flex items-center gap-2">
+                  <Icon
+                    name="ph:check-circle-fill"
+                    class="w-5 h-5 text-green-500"
+                  />
+                  <span class="text-gray-700">{spec}</span>
+                </div>
+              ))
+            }
+          </div>
         </div>
 
         <!-- Skills -->
@@ -133,7 +225,7 @@ const companyInfo = {
           <div class="flex justify-center">
             {
               teamMembers.map((member) => (
-                <div class="text-center max-w-sm">
+                <div class="text-center max-w-2xl">
                   <div class="w-32 h-32 mx-auto mb-4">
                     <img
                       src={member.image}
@@ -141,12 +233,19 @@ const companyInfo = {
                       class="w-full h-full object-cover rounded-full"
                     />
                   </div>
-                  <div class="font-semibold text-gray-800 text-xl">
-                    {member.name}
+                  <div class="font-semibold text-gray-800 text-xl mb-2">
+                    <a
+                      href={member.upworkProfile}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-red-600 transition-colors">
+                      {member.name}
+                    </a>
                   </div>
                   <div class="text-sm text-gray-600 mb-3">{member.title}</div>
+                  <p class="text-gray-600 mb-4">{member.description}</p>
                   {member.badges && (
-                    <div class="flex flex-wrap gap-2 justify-center">
+                    <div class="flex flex-wrap gap-2 justify-center mb-6">
                       {member.badges.map((badge) => (
                         <span class="px-3 py-1 bg-green-50 text-green-600 rounded-full text-sm">
                           {badge}
@@ -154,6 +253,38 @@ const companyInfo = {
                       ))}
                     </div>
                   )}
+                  <div class="flex justify-center gap-3 mb-8">
+                    {actionButtons.freelancer.map((button) => (
+                      <a
+                        href={button.href}
+                        target={
+                          button.href.startsWith("http") ? "_blank" : "_self"
+                        }
+                        rel={
+                          button.href.startsWith("http")
+                            ? "noopener noreferrer"
+                            : ""
+                        }
+                        class={`flex items-center gap-2 px-4 py-2 rounded-full transition-colors ${
+                          button.primary
+                            ? "bg-red-600 text-white hover:bg-red-700"
+                            : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                        }`}>
+                        <Icon name={button.icon} class="w-5 h-5" />
+                        <span>{button.text}</span>
+                      </a>
+                    ))}
+                  </div>
+                  <div class="text-left max-w-lg mx-auto">
+                    <h4 class="font-semibold mb-2 text-gray-700">
+                      Key Achievements:
+                    </h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-600">
+                      {member.achievements.map((achievement) => (
+                        <li>{achievement}</li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               ))
             }
