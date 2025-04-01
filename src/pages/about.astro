@@ -14,34 +14,27 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
 <Layout title="About">
   <Container>
     <Sectionhead>
-      <Fragment slot="title">About Utility Gods</Fragment>
+      <Fragment slot="title"
+        >About <span class="text-red-500">Utility Gods</span></Fragment
+      >
       <Fragment slot="desc"
-        >Building developer-first tools and solutions</Fragment
+        >Building developer-first tools and solutions with a focus on open
+        source innovation and technical excellence.</Fragment
       >
     </Sectionhead>
 
-    <div class="flex flex-col gap-8 mx-auto max-w-4xl mt-16">
-      <div class="text-center">
-        <h2 class="text-4xl font-bold text-gray-800 mb-4">
-          Empowering Developers with Modern Solutions
-        </h2>
-        <p class="text-lg leading-relaxed text-slate-500">
-          From our powerful CMS to production-ready templates, we're building
-          tools that help developers create better software faster.
-        </p>
-      </div>
-
+    <div class="flex flex-col gap-12 items-center max-w-6xl mx-auto">
       <!-- Main Products -->
-      <div class="grid md:grid-cols-2 gap-8 mt-8">
+      <div class="grid md:grid-cols-2 gap-8 mt-8 w-full">
         <div
-          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
           <div class="mb-4">
             <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
               <Icon name="ph:database-bold" class="w-8 h-8" />
             </span>
           </div>
           <h3 class="text-2xl font-semibold mb-3">OrangeGas CMS</h3>
-          <p class="text-slate-500 mb-4">
+          <p class="text-slate-600 mb-4">
             A general-purpose CMS that empowers the way you create and manage
             content. Build collections, blogs, and rich text content with ease.
           </p>
@@ -53,14 +46,14 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
         </div>
 
         <div
-          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
           <div class="mb-4">
             <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
               <Icon name="ph:package-bold" class="w-8 h-8" />
             </span>
           </div>
           <h3 class="text-2xl font-semibold mb-3">Developer Tools</h3>
-          <p class="text-slate-500 mb-4">
+          <p class="text-slate-600 mb-4">
             A suite of tools including QR Gods for QR code generation, PhotoShip
             for image processing, and gottem cli for development workflows.
           </p>
@@ -73,48 +66,48 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
       </div>
 
       <!-- Template Categories -->
-      <div class="mt-16">
+      <div class="w-full">
         <h3 class="text-2xl font-bold text-center mb-8">
           Development Templates
         </h3>
         <div class="grid md:grid-cols-3 gap-6">
           <div
-            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
             <div class="mb-4">
               <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
                 <Icon name="ph:code-bold" class="w-6 h-6" />
               </span>
             </div>
             <h3 class="text-xl font-semibold mb-2">Web Templates</h3>
-            <p class="text-slate-500">
+            <p class="text-slate-600">
               Modern templates for Astro, SvelteKit, and SolidJS with Tailwind
               and best practices built-in.
             </p>
           </div>
 
           <div
-            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
             <div class="mb-4">
               <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
                 <Icon name="ph:terminal-window-bold" class="w-6 h-6" />
               </span>
             </div>
             <h3 class="text-xl font-semibold mb-2">Backend Templates</h3>
-            <p class="text-slate-500">
+            <p class="text-slate-600">
               FastAPI, Go Echo, and HTMX templates with modern stack
               integrations.
             </p>
           </div>
 
           <div
-            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
             <div class="mb-4">
               <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
                 <Icon name="ph:brain-bold" class="w-6 h-6" />
               </span>
             </div>
             <h3 class="text-xl font-semibold mb-2">Full-Stack Starters</h3>
-            <p class="text-slate-500">
+            <p class="text-slate-600">
               Complete setups with databases, authentication, and modern UI
               frameworks.
             </p>
@@ -123,30 +116,30 @@ const publishedTeamMembers = await getCollection("team", ({ data }) => {
       </div>
 
       <!-- GitHub Stats -->
-      <div class="mt-16 text-center">
+      <div class="w-full text-center">
         <h3 class="text-2xl font-bold mb-6">Our Impact</h3>
         <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-white p-6 rounded-xl shadow-sm">
-            <div class="text-3xl font-bold text-red-500 mb-2">9</div>
-            <div class="text-slate-500">Template Repositories</div>
+          <div class="bg-slate-50 p-6 rounded-xl">
+            <div class="text-3xl font-black text-red-500 mb-2">9</div>
+            <div class="text-slate-600 font-medium">Template Repositories</div>
           </div>
-          <div class="bg-white p-6 rounded-xl shadow-sm">
-            <div class="text-3xl font-bold text-red-500 mb-2">4</div>
-            <div class="text-slate-500">Core Products</div>
-            <div class="text-sm text-slate-400 mt-1">
+          <div class="bg-slate-50 p-6 rounded-xl">
+            <div class="text-3xl font-black text-red-500 mb-2">4</div>
+            <div class="text-slate-600 font-medium">Core Products</div>
+            <div class="text-sm text-slate-500 mt-1">
               OrangeGas, gottem cli, QR Gods, PhotoShip
             </div>
           </div>
-          <div class="bg-white p-6 rounded-xl shadow-sm">
-            <div class="text-3xl font-bold text-red-500 mb-2">100%</div>
-            <div class="text-slate-500">Open Source</div>
-            <div class="text-sm text-slate-400 mt-1">MIT & GPL Licensed</div>
+          <div class="bg-slate-50 p-6 rounded-xl">
+            <div class="text-3xl font-black text-red-500 mb-2">100%</div>
+            <div class="text-slate-600 font-medium">Open Source</div>
+            <div class="text-sm text-slate-500 mt-1">MIT & GPL Licensed</div>
           </div>
         </div>
       </div>
 
       <!-- CTA -->
-      <div class="mt-16 text-center flex gap-4 justify-center">
+      <div class="w-full text-center flex gap-4 justify-center">
         <a
           href="/services"
           class="inline-flex items-center gap-2 px-6 py-3 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors">
