@@ -1,212 +1,50 @@
 ---
 import { Icon } from "astro-icon/components";
+const logos = [
+  { src: "/icons/react.svg", alt: "React" },
+  { src: "/icons/svelte.svg", alt: "Svelte" },
+  { src: "/icons/nextjs.svg", alt: "Next.js" },
+  { src: "/icons/vue.svg", alt: "Vue" },
+  { src: "/icons/wordpress.svg", alt: "WordPress" },
+  { src: "/icons/htmx.svg", alt: "HTMX" },
+  { src: "/icons/html.svg", alt: "HTML5" },
+  { src: "/icons/css.svg", alt: "CSS3" },
+  { src: "/icons/tailwind.svg", alt: "Tailwind CSS" },
+  { src: "/icons/angular.svg", alt: "AngularJS" },
+  { src: "/icons/golang.svg", alt: "Go" },
+  { src: "/icons/nodejs.svg", alt: "Node.js" },
+  { src: "/icons/express.svg", alt: "Express" },
+  { src: "/icons/python.svg", alt: "Python" },
+  { src: "/icons/fastapi.svg", alt: "FastAPI" },
+  { src: "/icons/echo.svg", alt: "Echo" },
+  { src: "/icons/hf.svg", alt: "Hugging Face" },
+  { src: "/icons/langchain.svg", alt: "LangChain" },
+  { src: "/icons/docker.svg", alt: "Docker" },
+  { src: "/icons/typescript.svg", alt: "TypeScript" },
+  { src: "/icons/git.svg", alt: "Git" },
+  { src: "/icons/prisma.svg", alt: "Prisma" },
+  { src: "/icons/mysql.svg", alt: "MySQL" },
+  { src: "/icons/javascript.svg", alt: "JavaScript" },
+  { src: "/icons/openai.svg", alt: "OpenAI" },
+  { src: "/icons/solidjs.svg", alt: "SolidJS" },
+  { src: "/icons/strapi.svg", alt: "Strapi" },
+  { src: "/icons/tensorflow.svg", alt: "TensorFlow" },
+  { src: "/icons/ocaml.svg", alt: "OCaml" },
+];
 ---
 
 <div class="mt-16">
   <div class="mx-auto max-w-6xl px-4 lg:px-6">
-    <div
-      class="mx-auto grid max-w-lg grid-cols-1 items-center gap-y-8 sm:max-w-xl sm:grid-cols-1 lg:mx-0 lg:max-w-none lg:grid-cols-1">
-      <!-- Front-end Technologies -->
-      <div class="bg-white/5 p-6 rounded-xl">
-        <h3 class="text-lg font-semibold mb-4 text-center text-gray-900">
-          Front-end Technologies
-        </h3>
-        <div
-          class="grid grid-cols-4 sm:grid-cols-6 lg:grid-cols-8 gap-6 items-center justify-items-center">
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/react.svg"
-              alt="React"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/svelte.svg"
-              alt="Svelte"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/nextjs.svg"
-              alt="Next.js"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/vue.svg"
-              alt="Vue"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/wordpress.svg"
-              alt="WordPress"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/htmx.svg"
-              alt="HTMX"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/html.svg"
-              alt="HTML5"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/css.svg"
-              alt="CSS3"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/tailwind.svg"
-              alt="Tailwind CSS"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/angular.svg"
-              alt="AngularJS"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
+    <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-8 items-center justify-items-center py-12">
+      {logos.map((logo) => (
+        <div class="w-16 h-16 flex items-center justify-center">
+          <img
+            src={logo.src}
+            alt={logo.alt}
+            class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
+          />
         </div>
-      </div>
-
-      <!-- Back-end Technologies -->
-      <div class="bg-white/5 p-6 rounded-xl">
-        <h3 class="text-lg font-semibold mb-4 text-center text-gray-900">
-          Back-end Technologies
-        </h3>
-        <div
-          class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-6 gap-6 items-center justify-items-center">
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/golang.svg"
-              alt="Go"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/nodejs.svg"
-              alt="Node.js"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/express.svg"
-              alt="Express"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/python.svg"
-              alt="Python"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/fastapi.svg"
-              alt="FastAPI"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/echo.svg"
-              alt="Echo"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- AI Technologies -->
-      <div class="bg-white/5 p-6 rounded-xl">
-        <h3 class="text-lg font-semibold mb-4 text-center text-gray-900">
-          AI Technologies
-        </h3>
-        <div
-          class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/hf.svg"
-              alt="Hugging Face"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/langchain.svg"
-              alt="LangChain"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-        </div>
-      </div>
-
-      <!-- Development Tools -->
-      <div class="bg-white/5 p-6 rounded-xl">
-        <h3 class="text-lg font-semibold mb-4 text-center text-gray-900">
-          Development Tools
-        </h3>
-        <div
-          class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-6 items-center justify-items-center">
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/docker.svg"
-              alt="Docker"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/typescript.svg"
-              alt="TypeScript"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/git.svg"
-              alt="Git"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/prisma.svg"
-              alt="Prisma"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-          <div class="flex items-center justify-center w-12 h-8">
-            <img
-              src="/icons/mysql.svg"
-              alt="MySQL"
-              class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-            />
-          </div>
-        
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </div>

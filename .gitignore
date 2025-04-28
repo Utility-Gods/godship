@@ -25,3 +25,5 @@ pnpm-lock.yaml
 yarn.lock
 
 dist.zip
+
+.opencode
