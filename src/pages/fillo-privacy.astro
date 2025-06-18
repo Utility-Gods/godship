@@ -1,0 +1,261 @@
+---
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/container.astro";
+import Sectionhead from "@components/sectionhead.astro";
+---
+
+<Layout title="Privacy Policy - Fillo">
+  <Container>
+    <Sectionhead>
+      <Fragment slot="title">Privacy Policy for <span class="text-red-500">Fillo</span></Fragment>
+      <Fragment slot="desc">
+        How we collect, use, and protect your data when using Fillo Chrome extension
+      </Fragment>
+    </Sectionhead>
+
+    <div class="prose prose-lg max-w-4xl mx-auto">
+      <p class="text-sm text-slate-600 mb-8"><strong>Last Updated:</strong> June 18, 2025</p>
+
+      <h2>Overview</h2>
+      <p>
+        Fillo is a Chrome extension designed to help developers by intelligently filling form fields on localhost development sites using AI language models. This privacy policy explains how Fillo collects, uses, and protects your data.
+      </p>
+
+      <h2>Data Collection and Usage</h2>
+
+      <h3>What Data We Collect</h3>
+      <ol>
+        <li>
+          <strong>API Keys and Configuration</strong>
+          <ul>
+            <li>API keys for language model providers (OpenAI, Anthropic, Google, Ollama)</li>
+            <li>Provider settings and model preferences</li>
+            <li>Creativity level preferences</li>
+            <li>General extension settings</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Form Field Data (Localhost Only)</strong>
+          <ul>
+            <li>Form field types and labels detected on localhost sites</li>
+            <li>Generated content for caching purposes</li>
+            <li>Page context (titles, meta tags) from localhost sites only</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Usage Data</strong>
+          <ul>
+            <li>Cache hit/miss statistics</li>
+            <li>Error logs (no personal data included)</li>
+            <li>Performance metrics</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>How We Use Your Data</h3>
+      <ol>
+        <li>
+          <strong>Primary Functions</strong>
+          <ul>
+            <li>Generate contextually appropriate content for form fields</li>
+            <li>Cache responses to reduce API calls and improve performance</li>
+            <li>Provide personalized AI-generated content based on your creativity preferences</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Performance Optimization</strong>
+          <ul>
+            <li>Store generated content locally to avoid duplicate API calls</li>
+            <li>Monitor extension performance to identify and fix issues</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Data Storage</h3>
+      <ol>
+        <li>
+          <strong>Local Storage Only</strong>
+          <ul>
+            <li>All data is stored locally on your device using Chrome's storage API</li>
+            <li>API keys are encrypted before storage</li>
+            <li>No data is transmitted to Fillo's servers</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Temporary Cache</strong>
+          <ul>
+            <li>Generated content is cached locally with expiration times</li>
+            <li>Cache can be manually cleared through the extension settings</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>Data Sharing</h2>
+
+      <h3>Third-Party Services</h3>
+      <p>Fillo integrates with the following AI providers when you configure and use them:</p>
+      <ol>
+        <li><strong>OpenAI</strong> - When using OpenAI models, your prompts are sent to OpenAI's API</li>
+        <li><strong>Anthropic</strong> - When using Claude models, your prompts are sent to Anthropic's API</li>
+        <li><strong>Google</strong> - When using Gemini models, your prompts are sent to Google's API</li>
+        <li><strong>Ollama</strong> - When using local Ollama models, data stays on your local machine</li>
+      </ol>
+
+      <p class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+        <strong>Important:</strong> Your API keys and generated content are only shared with the specific AI provider you choose to use for each request.
+      </p>
+
+      <h3>No Data Sales or Marketing</h3>
+      <ul>
+        <li>Fillo does not sell your data to third parties</li>
+        <li>Fillo does not use your data for advertising or marketing purposes</li>
+        <li>Fillo does not share your data with any parties other than the AI providers you explicitly configure</li>
+      </ul>
+
+      <h2>Security Measures</h2>
+      <ol>
+        <li>
+          <strong>API Key Protection</strong>
+          <ul>
+            <li>API keys are encrypted using Chrome's storage encryption</li>
+            <li>Keys are never logged or transmitted outside of API calls</li>
+            <li>Keys are automatically cleared if the extension is uninstalled</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Localhost Restriction</strong>
+          <ul>
+            <li>Extension only operates on localhost development sites</li>
+            <li>No data collection from production or public websites</li>
+            <li>Hostname validation prevents accidental activation on non-localhost sites</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Minimal Permissions</strong>
+          <ul>
+            <li>Extension requests only necessary Chrome permissions</li>
+            <li>No access to browsing history or personal files</li>
+            <li>No network access beyond configured AI provider APIs</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>Your Rights and Controls</h2>
+
+      <h3>Data Management</h3>
+      <ol>
+        <li>
+          <strong>Access and Control</strong>
+          <ul>
+            <li>View all stored settings through the extension's settings panel</li>
+            <li>Export or delete cached data at any time</li>
+            <li>Change or remove API keys whenever desired</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Cache Management</strong>
+          <ul>
+            <li>Clear all cached responses through settings</li>
+            <li>Set cache expiration preferences</li>
+            <li>View cache statistics and usage</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>Opt-Out Options</h3>
+      <ol>
+        <li>
+          <strong>Disable Features</strong>
+          <ul>
+            <li>Turn off specific AI providers</li>
+            <li>Disable caching functionality</li>
+            <li>Adjust or disable automatic form detection</li>
+          </ul>
+        </li>
+        <li>
+          <strong>Complete Removal</strong>
+          <ul>
+            <li>Uninstalling the extension removes all local data</li>
+            <li>No residual data remains after uninstallation</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h2>Compliance with AI Provider Policies</h2>
+      <p>When using Fillo, you are also subject to the privacy policies and terms of service of the AI providers you configure:</p>
+      <ul>
+        <li><a href="https://openai.com/privacy/" class="text-red-500 hover:text-red-600">OpenAI Privacy Policy</a></li>
+        <li><a href="https://www.anthropic.com/privacy" class="text-red-500 hover:text-red-600">Anthropic Privacy Policy</a></li>
+        <li><a href="https://policies.google.com/privacy" class="text-red-500 hover:text-red-600">Google Privacy Policy</a></li>
+        <li><a href="https://ollama.ai/privacy" class="text-red-500 hover:text-red-600">Ollama Privacy Policy</a></li>
+      </ul>
+
+      <h2>Children's Privacy</h2>
+      <p>Fillo is designed for developers and is not intended for use by children under 13. We do not knowingly collect personal information from children under 13.</p>
+
+      <h2>Changes to This Policy</h2>
+      <p>We may update this privacy policy from time to time. When we do:</p>
+      <ol>
+        <li>The "Last Updated" date will be revised</li>
+        <li>Significant changes will be highlighted in extension update notes</li>
+        <li>Continued use of the extension constitutes acceptance of the updated policy</li>
+      </ol>
+
+      <h2>Contact Information</h2>
+      <p>For questions about this privacy policy or Fillo's data practices:</p>
+      <ul>
+        <li><strong>GitHub Issues:</strong> <a href="https://github.com/anthropics/claude-code/issues" class="text-red-500 hover:text-red-600">Report privacy concerns</a></li>
+        <li><strong>Extension Support:</strong> Use the feedback option in the extension settings</li>
+      </ul>
+
+      <h2>Transparency Commitment</h2>
+      <p>Fillo is committed to transparency in data handling:</p>
+      <ol>
+        <li><strong>Open Source Consideration:</strong> We are exploring open-sourcing portions of Fillo to increase transparency</li>
+        <li><strong>Regular Audits:</strong> We regularly review our data practices to ensure compliance with this policy</li>
+        <li><strong>User Education:</strong> We provide clear information about how your data is used within the extension interface</li>
+      </ol>
+
+      <h2>Data Retention</h2>
+      <ol>
+        <li><strong>API Keys:</strong> Stored until manually removed or extension uninstalled</li>
+        <li><strong>Cache Data:</strong> Automatically expires based on your settings (default: 30 days)</li>
+        <li><strong>Settings:</strong> Stored until manually reset or extension uninstalled</li>
+        <li><strong>Usage Statistics:</strong> Cleared with each extension update or manual reset</li>
+      </ol>
+
+      <div class="bg-slate-50 p-6 rounded-lg mt-8">
+        <p class="mb-0">
+          By using Fillo, you acknowledge that you have read and understood this privacy policy and agree to the data practices described herein.
+        </p>
+      </div>
+    </div>
+  </Container>
+</Layout>
+
+<style>
+  .prose {
+    @apply text-slate-700;
+  }
+  .prose h2 {
+    @apply text-2xl font-bold text-slate-900 mt-8 mb-4;
+  }
+  .prose h3 {
+    @apply text-xl font-semibold text-slate-800 mt-6 mb-3;
+  }
+  .prose p {
+    @apply mb-4 leading-relaxed;
+  }
+  .prose ul, .prose ol {
+    @apply mb-4 pl-6;
+  }
+  .prose li {
+    @apply mb-2;
+  }
+  .prose a {
+    @apply text-red-500 hover:text-red-600 transition-colors;
+  }
+  .prose strong {
+    @apply font-semibold text-slate-800;
+  }
+</style>

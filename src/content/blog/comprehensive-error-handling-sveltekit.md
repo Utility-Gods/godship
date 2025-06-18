@@ -171,7 +171,7 @@ The final piece is how we present these errors to our users. SvelteKit's error p
 
 <div class="error-container">
   <div class="error-message">{errorMessage}</div>
-  <div class="error-reference">Reference ID: {errorTraceId}</div>
+  <div class="error-reference">Reference ID: {errorTraceId}</div>F
 </div>
 ```
 
