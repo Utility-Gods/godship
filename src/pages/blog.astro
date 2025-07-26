@@ -20,7 +20,7 @@ const categories = [...new Set(posts.map((post) => post.data.category))];
     <Sectionhead>
       <Fragment slot="title">Our Blog</Fragment>
       <Fragment slot="desc">
-        We write about development, design, and building great products.
+        We write about development, design, and building great products. ({posts.length} posts published)
       </Fragment>
     </Sectionhead>
 
