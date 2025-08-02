@@ -302,7 +302,7 @@ document.addEventListener("htmx:beforeOnLoad", function(evt) {
 
 ## Real-World Implementation
 
-These HTMX partial swap patterns aren't just theoretical—they're battle-tested in production applications. At [PhotoShip](https://photoship.co), we've leveraged these exact patterns to build a dynamic catalog management platform that feels smooth and responsive while maintaining the simplicity of hypermedia-driven architecture.
+These HTMX partial swap patterns aren't just theoretical—they're battle-tested in production applications. At [PhotoShip](https://photoship.app), we've leveraged these exact patterns to build a dynamic catalog management platform that feels smooth and responsive while maintaining the simplicity of hypermedia-driven architecture.
 
 The catalog creation workflow, team collaboration features, and document processing all use the OOB swap patterns detailed above. Users get instant feedback through toast notifications, smooth modal interactions, and seamless page updates—all powered by server-orchestrated partial swaps.
 

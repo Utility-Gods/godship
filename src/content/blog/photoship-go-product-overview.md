@@ -8,7 +8,7 @@ author: "Siddharth"
 tags: ["saas", "product management", "catalogs", "team collaboration", "ai workflows"]
 ---
 
-Building product catalogs shouldn't require a computer science degree. Yet most platforms either oversimplify to the point of uselessness or overwhelm users with unnecessary complexity. **[PhotoShip](https://photoship.co)** takes a different approach: intelligent simplicity that scales with your business needs.
+Building product catalogs shouldn't require a computer science degree. Yet most platforms either oversimplify to the point of uselessness or overwhelm users with unnecessary complexity. **[PhotoShip](https://photoship.app)** takes a different approach: intelligent simplicity that scales with your business needs.
 
 ## What Makes PhotoShip Different
 
@@ -64,7 +64,7 @@ Under the hood, PhotoShip runs on a **modern architecture** that prioritizes rel
 
 Built with **modern web technologies**, the platform delivers dynamic interactions while maintaining fast loading times. Pages work reliably across all devices and provide smooth user experiences.
 
-PhotoShip leverages hypermedia-driven architecture principles to create a responsive interface that feels modern without the complexity of traditional single-page applications. You can explore [PhotoShip](https://photoship.co) to experience how these patterns deliver seamless catalog management and team collaboration.
+PhotoShip leverages hypermedia-driven architecture principles to create a responsive interface that feels modern without the complexity of traditional single-page applications. You can explore [PhotoShip](https://photoship.app) to experience how these patterns deliver seamless catalog management and team collaboration.
 
 ### Designed for Scale
 
