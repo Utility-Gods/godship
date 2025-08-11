@@ -61,9 +61,19 @@ let { name, count = 0 } = $props();
 
 ## Migration Steps
 
-### 1. Update Dependencies
+### 1. Use the Official Migration Tool
 
-First, update your `package.json`:
+Svelte provides an automated migration tool to help with the transition:
+
+```bash
+npx sv migrate svelte-5
+```
+
+This tool will automatically update most of your code, but manual review is recommended.
+
+### 2. Update Dependencies
+
+Update your `package.json`:
 
 ```json
 {
@@ -73,7 +83,7 @@ First, update your `package.json`:
 }
 ```
 
-### 2. Update Configuration
+### 3. Update Configuration
 
 If you're using SvelteKit, update your `svelte.config.js`:
 
@@ -85,7 +95,7 @@ const config = {
 };
 ```
 
-### 3. Convert Reactive Declarations
+### 4. Convert Reactive Declarations
 
 Replace all `$:` declarations with `$derived`:
 
@@ -97,84 +107,171 @@ $: total = items.reduce((sum, item) => sum + item.price, 0);
 let total = $derived(items.reduce((sum, item) => sum + item.price, 0));
 ```
 
-### 4. Update Store Usage
+### 5. Migrate from Stores to Runes
 
-The store contract has changed in Svelte 5:
+While stores still work in Svelte 5, you can migrate to runes for simpler state management:
 
 ```javascript
-// Svelte 4
+// Svelte 4 - Using stores
 import { writable } from 'svelte/store';
-const count = writable(0);
-// In component: $count
+export const count = writable(0);
 
-// Svelte 5
-import { signal } from 'svelte';
-const count = signal(0);
-// In component: count.value
+// In component
+import { count } from './stores.js';
+$: console.log($count);
+
+// Svelte 5 - Using runes (recommended for component-local state)
+let count = $state(0);
+$effect(() => console.log(count));
+
+// For shared state, continue using stores or use .svelte.js files:
+// stores.svelte.js
+export const count = $state({ value: 0 });
+
+// In component
+import { count } from './stores.svelte.js';
+$effect(() => console.log(count.value));
 ```
+
+**Note:** Existing stores continue to work in Svelte 5, but runes provide a simpler alternative for most use cases.
 
 ## Common Pitfalls and Solutions
 
 ### 1. Lifecycle Methods
 
-Lifecycle methods have been simplified:
+Lifecycle methods like `onMount`, `onDestroy`, etc. continue to work in Svelte 5:
 
 ```javascript
-// Svelte 4
-onMount(() => {
-  // setup
-});
+// Both Svelte 4 and Svelte 5
+import { onMount, onDestroy } from 'svelte';
 
-// Svelte 5
-$effect(() => {
-  // setup
+onMount(() => {
+  console.log('Component mounted');
+  
   return () => {
-    // cleanup
+    console.log('Cleanup on destroy');
   };
 });
 ```
 
-### 2. Event Handlers
+**Note:** While `$effect` exists in Svelte 5, lifecycle methods are still the recommended approach for most component lifecycle needs.
 
-Event handlers remain largely the same, but with better type inference:
+### 2. Event Handler Syntax Changes
+
+Event handlers have a new syntax:
 
 ```javascript
-// Both versions work similarly
-function handleClick(event) {
-  console.log('clicked');
+<!-- Svelte 4 -->
+<button on:click={handleClick}>Click me</button>
+<input on:input={handleInput} />
+
+<!-- Svelte 5 -->
+<button onclick={handleClick}>Click me</button>
+<input oninput={handleInput} />
+```
+
+### 3. Component Events and Dispatchers
+
+Replace event dispatchers with callback props:
+
+```javascript
+// Svelte 4 - Child component
+import { createEventDispatcher } from 'svelte';
+const dispatch = createEventDispatcher();
+
+function handleClick() {
+  dispatch('clicked', { value: 'hello' });
 }
+
+// Svelte 5 - Child component
+let { onclick } = $props();
+
+function handleClick() {
+  onclick?.({ value: 'hello' });
+}
+```
+
+### 4. Bindable Props
+
+Two-way binding requires explicit declaration:
+
+```javascript
+// Svelte 4 - automatic binding
+export let value;
+
+// Svelte 5 - explicit bindable
+let { value = $bindable() } = $props();
+```
+
+### 5. Component Instantiation
+
+Components are now functions, not classes:
+
+```javascript
+// Svelte 4
+import Component from './Component.svelte';
+const component = new Component({
+  target: document.body,
+  props: { name: 'world' }
+});
+
+// Svelte 5
+import { mount } from 'svelte';
+import Component from './Component.svelte';
+const component = mount(Component, {
+  target: document.body,
+  props: { name: 'world' }
+});
+```
+
+### 6. Slots to Snippets Migration
+
+Slots are replaced with snippets in Svelte 5:
+
+```javascript
+<!-- Svelte 4 - Parent component -->
+<Component>
+  <h1 slot="header">Title</h1>
+  <p>Content</p>
+</Component>
+
+<!-- Svelte 5 - Parent component -->
+<Component>
+  {#snippet header()}
+    <h1>Title</h1>
+  {/snippet}
+  {#snippet children()}
+    <p>Content</p>
+  {/snippet}
+</Component>
+
+<!-- Svelte 5 - Child component -->
+<script>
+  let { header, children } = $props();
+</script>
+
+<header>
+  {@render header()}
+</header>
+<main>
+  {@render children()}
+</main>
 ```
 
 ## Testing Your Migration
 
-After migration, thoroughly test your application:
+Test these key areas after migration:
 
-1. Check all reactive updates
-2. Verify component props
-3. Test event handlers
-4. Validate store interactions
-5. Review lifecycle-dependent code
-
-## Performance Improvements
-
-Svelte 5 brings several performance improvements:
-
-- Smaller bundle sizes
-- Faster component initialization
-- More efficient updates
-- Better memory management
+- Props destructuring with `$props()`
+- Event handlers (`onclick` vs `on:click`)
+- Component communication via callback props
+- Snippets replacing slots
 
 ## Conclusion
 
-Migrating to Svelte 5 might seem daunting at first, but the benefits are worth it. The new Runes API makes code more explicit and easier to understand, while the performance improvements make your applications faster and more efficient.
+Svelte 5 brings runes for explicit reactivity and performance improvements. Use `npx sv migrate svelte-5` to automate most changes, then test thoroughly.
 
-Remember to:
-- Take the migration step by step
-- Test thoroughly after each major change
-- Keep your dependencies updated
-- Review the official Svelte 5 documentation for detailed information
-
-For more complex applications, consider using the official migration tool (when available) or migrating component by component to ensure a smooth transition.
+Benefits: smaller bundles, better performance, clearer reactivity model.
 
 ## Resources
 
