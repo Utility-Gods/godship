@@ -32,11 +32,10 @@ const getLanguageCounts = (services) => {
 
 const categories = [
   { id: "all", name: "All" },
-  { id: "cms", name: "CMS" },
-  { id: "saas", name: "SaaS Products" },
-  { id: "tools", name: "Developer Tools" },
+  { id: "products", name: "Products & Services" },
   { id: "templates", name: "Templates" },
   { id: "open-source", name: "Open Source" },
+  { id: "experiments", name: "Experiments" },
 ];
 
 const languages = [
@@ -51,51 +50,32 @@ const languages = [
 ];
 
 const services = [
-  {
-    title: "Fillo - AI Form Filler",
-    description:
-      "AI-powered Chrome extension that intelligently fills form fields on localhost development sites. Support for multiple AI providers and smart caching for efficient development.",
-    category: "tools",
-    languages: ["typescript"],
-    icon: "ph:magic-wand-bold",
-    link: "https://github.com/Utility-Gods/fillo",
-    isProduct: true,
-  },
-  {
-    title: "Hypermedia Sync",
-    description:
-      "Real-time synchronization experiments using hypermedia-driven architecture. Sync 10,000 checkboxes across browsers with Server-Sent Events and HTML fragments.",
-    category: "tools",
-    languages: ["go", "htmx"],
-    icon: "ph:broadcast-bold",
-    link: "https://hypermedia.utilitygods.com",
-    isProduct: true,
-  },
-  {
-    title: "OrangeGas - Headless CMS",
-    description:
-      "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
-    category: "cms",
-    languages: ["typescript", "strapi"],
-    icon: "ph:database-bold",
-    link: "https://orangegas.utilitygods.com",
-    isProduct: true,
-  },
+  // Products & Services (live links users can actually use)
   {
     title: "PhotoShip - Catalogue Generation At Large",
     description:
       "Enterprise-grade OCR and image processing SaaS for e-commerce. Transform product catalogs, extract data from PDFs, and generate custom brochures with AI-powered processing.",
-    category: "saas",
+    category: "products",
     languages: ["python", "go", "htmx"],
     icon: "ph:image-bold",
     link: "https://photoship.app",
     isProduct: true,
   },
   {
+    title: "OrangeGas - Headless CMS",
+    description:
+      "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
+    category: "products",
+    languages: ["typescript", "strapi"],
+    icon: "ph:database-bold",
+    link: "https://orangegas.utilitygods.com",
+    isProduct: true,
+  },
+  {
     title: "DocuGods",
     description:
       "SaaS platform for automated document processing and verification. Simplifies government ID applications with AI-powered document analysis and validation.",
-    category: "saas",
+    category: "products",
     languages: ["typescript", "python"],
     icon: "ph:file-text-bold",
     link: "https://docugods.com",
@@ -105,7 +85,7 @@ const services = [
     title: "PasteViz",
     description:
       "SaaS analytics platform for instant data visualization. Create, share, and embed beautiful charts and graphs without coding.",
-    category: "saas",
+    category: "products",
     languages: ["typescript"],
     icon: "ph:chart-line-bold",
     link: "https://pasteviz.vercel.app/",
@@ -115,12 +95,36 @@ const services = [
     title: "Batch GeoCoding API",
     description:
       "High-performance geocoding service for bulk address processing. Convert addresses to coordinates at scale with enterprise-grade reliability.",
-    category: "saas",
+    category: "products",
     languages: ["typescript"],
     icon: "ph:map-pin-bold",
     link: "https://geocoding-api.vercel.app/",
     isProduct: true,
   },
+  {
+    title: "Fillo - AI Form Filler",
+    description:
+      "AI-powered Chrome extension that intelligently fills form fields on localhost development sites. Support for multiple AI providers and smart caching for efficient development.",
+    category: "products",
+    languages: ["typescript"],
+    icon: "ph:magic-wand-bold",
+    link: "https://github.com/Utility-Gods/fillo",
+    isProduct: true,
+  },
+
+  // Experiments
+  {
+    title: "Hypermedia Sync",
+    description:
+      "Real-time synchronization experiments using hypermedia-driven architecture. Sync 10,000 checkboxes across browsers with Server-Sent Events and HTML fragments.",
+    category: "experiments",
+    languages: ["go", "htmx"],
+    icon: "ph:broadcast-bold",
+    link: "https://hypermedia.utilitygods.com",
+    isProduct: true,
+  },
+
+  // Open Source (NPM packages, tools, libraries)
   {
     title: "Angular-httpshooter",
     description:
@@ -143,7 +147,7 @@ const services = [
     title: "Prisma Generator",
     description:
       "A powerful tool for generating Prisma schemas with AI assistance.",
-    category: "tools",
+    category: "open-source",
     languages: ["typescript"],
     icon: "ph:database-bold",
     link: "https://github.com/siddarthvader/prisma-gen",
@@ -157,27 +161,33 @@ const services = [
     icon: "ph:tree-structure-bold",
     link: "https://github.com/Utility-Gods/node-sitemap-cli",
   },
-
+  {
+    title: "Claude Source Code Explorer",
+    description: "Claude code full original source code from source maps.",
+    category: "open-source",
+    languages: ["typescript"],
+    icon: "ph:brain-bold",
+    link: "https://github.com/Utility-Gods/claude-code",
+  },
   {
     title: "QR Gods - AI QR Code Generator",
     description:
       "Generate beautiful, customizable QR codes for your applications and marketing materials.",
-    category: "tools",
+    category: "open-source",
     languages: ["typescript"],
     icon: "ph:qr-code-bold",
     link: "https://github.com/Utility-Gods/qr-gen-ai",
-    isProduct: true,
   },
-
   {
     title: "Gottem - Developer CLI Tool",
     description: "Command-line tool to streamline development workflows.",
-    category: "tools",
+    category: "open-source",
     languages: ["go"],
     icon: "ph:terminal-window-bold",
     link: "https://github.com/Utility-Gods/gottem",
-    isProduct: true,
   },
+
+  // Templates (GitHub repos that are starter templates)
   {
     title: "Modern Astro Website Starter",
     description: "Modern website template built with Astro and TailwindCSS.",
@@ -221,14 +231,6 @@ const services = [
     link: "https://github.com/Utility-Gods/python-fastapi-sqlchemy-htmx-tailwind",
   },
   {
-    title: "Claude Source Code Explorer",
-    description: "Claude code full original source code from source maps.",
-    category: "tools",
-    languages: ["typescript"],
-    icon: "ph:brain-bold",
-    link: "https://github.com/Utility-Gods/claude-code",
-  },
-  {
     title: "Python HTMX Postgres Stack",
     description: "Python HTMX Tailwind Jinja Postgres Alembic template.",
     category: "templates",
@@ -268,6 +270,60 @@ const languageCounts = getLanguageCounts(services);
     </Sectionhead>
 
     <div class="mt-8 max-w-6xl mx-auto">
+      <!-- Featured Products Section -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold text-gray-800 mb-6">Featured Products & Services</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          {
+            services.filter(s => s.category === "products" && (s.title.includes("PhotoShip") || s.title.includes("OrangeGas"))).map((service) => (
+              <a
+                href={service.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group bg-white p-6 rounded-xl shadow-lg border-2 border-red-200 hover:shadow-xl transition-all duration-300"
+                data-category={service.category}
+                data-languages={service.languages.join(",")}>
+                <div class="flex items-start justify-between mb-4">
+                  <span class="inline-flex items-center justify-center w-12 h-12 rounded-lg bg-red-100 text-red-600 group-hover:bg-red-200 transition-colors">
+                    <Icon name={service.icon} class="w-6 h-6" />
+                  </span>
+                  <span class="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">
+                    Featured
+                  </span>
+                </div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2 group-hover:text-red-600 transition-colors">
+                  {service.title}
+                </h3>
+                <p class="text-gray-600 text-sm mb-4 line-clamp-3">
+                  {service.description}
+                </p>
+                <div class="flex items-center justify-between mt-auto">
+                  <div class="flex gap-2">
+                    {service.languages.map((lang) => {
+                      const langInfo = languages.find((l) => l.id === lang);
+                      return (
+                        langInfo?.icon && (
+                          <img
+                            src={langInfo.icon}
+                            alt={langInfo.name}
+                            title={langInfo.name}
+                            class="w-6"
+                          />
+                        )
+                      );
+                    })}
+                  </div>
+                  <span class="text-red-500 text-sm font-medium group-hover:translate-x-1 transition-transform">
+                    Try it now{" "}
+                    <Icon name="ph:arrow-right-bold" class="w-4 h-4 inline" />
+                  </span>
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+
       <!-- Filters -->
       <div
         class="bg-white p-4 rounded-lg shadow-sm border border-gray-100 mb-8">
@@ -317,7 +373,7 @@ const languageCounts = getLanguageCounts(services);
       <!-- Services Grid -->
       <div id="services-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {
-          services.map((service) => (
+          services.filter(s => !(s.category === "products" && (s.title.includes("PhotoShip") || s.title.includes("OrangeGas")))).map((service) => (
             <a
               href={service.link}
               target="_blank"
