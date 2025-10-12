@@ -7,9 +7,10 @@ import "@fontsource/inter";
 interface Props {
   title: string;
   ogImage?: string;
+  description?: string;
 }
 
-const { title, ogImage } = Astro.props;
+const { title, ogImage, description } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
@@ -41,7 +42,7 @@ const makeTitle = title
 
     <SEO
       title={`${title}${title && " | "}Utility Gods`}
-      description="Utility Gods is a software development agency specializing in open-source solutions."
+      description={description || "Utility Gods is a software development agency specializing in open-source solutions."}
       canonical={canonicalURL}
       twitter={{
         creator: "UtilityGods",
@@ -52,7 +53,7 @@ const makeTitle = title
         basic: {
           url: canonicalURL,
           type: "website",
-          title: `UtilityGods - One Stop for all Utility`,
+          title: makeTitle,
           image: resolvedImageWithDomain,
         },
       }}

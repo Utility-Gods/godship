@@ -17,7 +17,7 @@ const formattedDate = new Date(publishDate).toLocaleDateString("en-us", {
 const currentUrl = Astro.url.toString();
 ---
 
-<Layout title={title} ogImage={image}>
+<Layout title={title} ogImage={image} description={excerpt}>
   <Container>
     <div class="max-w-3xl mx-auto">
       <span class="text-red-500 uppercase tracking-wider text-sm font-medium">
