@@ -15,13 +15,9 @@ const formattedDate = new Date(publishDate).toLocaleDateString("en-us", {
 });
 
 const currentUrl = Astro.url.toString();
-
-// Get the slug from the URL to generate the OG image path
-const slug = Astro.url.pathname.split("/").filter(Boolean).pop();
-const ogImagePath = `/og/${slug}.png`;
 ---
 
-<Layout title={title} ogImage={ogImagePath}>
+<Layout title={title} ogImage={image}>
   <Container>
     <div class="max-w-3xl mx-auto">
       <span class="text-red-500 uppercase tracking-wider text-sm font-medium">
