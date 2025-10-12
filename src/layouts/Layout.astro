@@ -6,16 +6,16 @@ import "@fontsource/inter";
 
 interface Props {
   title: string;
+  ogImage?: string;
 }
 
-const { title } = Astro.props;
+const { title, ogImage } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site).toString();
 
-const resolvedImageWithDomain = new URL(
-  "/opengraph.png",
-  Astro.site
-).toString();
+const resolvedImageWithDomain = ogImage
+  ? new URL(ogImage, Astro.site).toString()
+  : new URL("/opengraph.png", Astro.site).toString();
 
 const makeTitle = title
   ? title + " | " + "Utility Gods"
