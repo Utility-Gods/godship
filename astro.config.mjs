@@ -7,7 +7,7 @@ import remarkMermaid from "remark-mermaid";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://www.utilitygods.com",
+  site: "https://utilitygods.com",
   integrations: [
     tailwind(),
     mdx({
