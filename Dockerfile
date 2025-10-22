@@ -18,6 +18,9 @@ RUN bun run build
 # Production stage
 FROM nginx:alpine
 
+# Install curl for health check
+RUN apk add --no-cache curl
+
 # Copy built files from builder
 COPY --from=builder /app/dist /usr/share/nginx/html
 
@@ -26,6 +29,10 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
+
+# Health check - verify nginx is serving content
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+  CMD curl -f http://localhost/ || exit 1
 
 # Start nginx
 CMD ["nginx", "-g", "daemon off;"]
