@@ -1,0 +1,81 @@
+---
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+
+// Get published blog posts, sorted by date
+const publishedBlogEntries = await getCollection("blog", ({ data }) => {
+  return !data.draft && data.publishDate < new Date();
+});
+
+publishedBlogEntries.sort(function (a, b) {
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
+
+// Get latest 3 posts
+const latestPosts = publishedBlogEntries.slice(0, 3);
+---
+
+<div class="mt-24 mb-16">
+  <div class="mx-auto max-w-6xl px-4 lg:px-6">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+        From the Blog
+      </h2>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+        Insights, tutorials, and thoughts on building software
+      </p>
+    </div>
+
+    <!-- Blog Posts Grid -->
+    <div class="grid md:grid-cols-3 gap-8">
+      {latestPosts.map((post) => (
+        <a
+          href={`/blog/${post.slug}`}
+          class="group bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden hover:shadow-lg transition-all duration-300">
+          {post.data.image && (
+            <div class="aspect-video overflow-hidden bg-slate-100">
+              <img
+                src={post.data.image}
+                alt={post.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+            </div>
+          )}
+          <div class="p-6">
+            <div class="flex items-center gap-2 text-sm text-slate-500 mb-3">
+              <Icon name="ph:calendar-blank" class="w-4 h-4" />
+              <time datetime={post.data.publishDate.toISOString()}>
+                {post.data.publishDate.toLocaleDateString('en-us', {
+                  year: 'numeric',
+                  month: 'short',
+                  day: 'numeric'
+                })}
+              </time>
+            </div>
+            <h3 class="text-xl font-semibold text-slate-900 mb-2 group-hover:text-red-500 transition-colors">
+              {post.data.title}
+            </h3>
+            <p class="text-slate-600 text-sm line-clamp-3 mb-4">
+              {post.data.excerpt || post.data.snippet}
+            </p>
+            <div class="flex items-center text-red-500 text-sm font-medium group-hover:gap-2 transition-all">
+              Read more
+              <Icon name="ph:arrow-right-bold" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- View All Link -->
+    <div class="text-center mt-12">
+      <a
+        href="/blog"
+        class="inline-flex items-center gap-2 px-6 py-3 text-red-500 border-2 border-red-500 rounded-lg hover:bg-red-50 transition-colors font-medium">
+        View All Posts
+        <Icon name="ph:arrow-right-bold" class="w-5 h-5" />
+      </a>
+    </div>
+  </div>
+</div>

@@ -4,77 +4,63 @@ import { Icon } from "astro-icon/components";
 const features = [
   // Main Products (PhotoShip & OrangeGas first)
   {
-    title: "PhotoShip - Catalogue Generation At Large",
+    title: "PhotoShip",
     description:
-      "Enterprise-grade OCR and image processing SaaS for e-commerce. Transform product catalogs, extract data from PDFs, and generate custom brochures with AI-powered processing.",
+      "Enterprise OCR and image processing SaaS for e-commerce. Transform product catalogs, extract data from PDFs, and generate custom brochures with AI-powered processing.",
     icon: "ph:image-bold",
     link: "https://photoship.app",
     isMainProduct: true,
   },
   {
-    title: "OrangeGas - Headless CMS",
+    title: "OrangeGas CMS",
     description:
-      "A general-purpose CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
+      "A headless CMS that empowers the way you create and manage content. Build collections, blogs, and rich text content with ease.",
     icon: "ph:database-bold",
     link: "https://orangegas.utilitygods.com",
     isMainProduct: true,
   },
-  // Other Products & Services
+  // Experiments & Public Projects
   {
-    title: "DocuGods",
+    title: "Hypermedia Sync Experiment",
     description:
-      "AI-powered document helper that simplifies the process of applying for government IDs like Aadhar, PAN, Voter ID, and more.",
-    icon: "ph:file-text-bold",
-    link: "https://docugods.com",
-  },
-  {
-    title: "PasteViz",
-    description:
-      "A modern web application built with Svelte that allows users to generate and embed analytics/visualizations on the fly.",
-    icon: "ph:chart-line-bold",
-    link: "https://pasteviz.vercel.app/",
-  },
-  {
-    title: "Batch GeoCoding API",
-    description:
-      "A powerful Express.js API for batch geocoding addresses. Built with TypeScript, Prisma ORM, and MySQL.",
-    icon: "ph:map-pin-bold",
-    link: "https://geocoding-api.vercel.app/",
-  },
-  {
-    title: "Fillo - AI Form Filler",
-    description:
-      "AI-powered Chrome extension that intelligently fills form fields on localhost development sites. Support for multiple AI providers and smart caching for efficient development.",
-    icon: "ph:magic-wand-bold",
-    link: "https://github.com/Utility-Gods/fillo",
-  },
-  // Experiments & Open Source
-  {
-    title: "Hypermedia Sync",
-    description:
-      "Real-time synchronization experiments using hypermedia-driven architecture. Sync 10,000 checkboxes across browsers with Server-Sent Events and HTML fragments.",
+      "Real-time synchronization demo using hypermedia architecture. Syncing 10,000 checkboxes across browsers with Server-Sent Events.",
     icon: "ph:broadcast-bold",
     link: "https://hypermedia.utilitygods.com",
   },
   {
-    title: "Angular-httpshooter",
+    title: "Fillo - AI Form Filler",
     description:
-      "An AngularJS factory that manages HTTP calls asynchronously, ensuring single-threaded communication between server and client.",
-    icon: "ph:arrows-out-bold",
-    link: "https://www.npmjs.com/package/angular-httpshooter",
+      "Chrome extension that intelligently fills form fields on localhost development sites using AI. Supports multiple providers with smart caching.",
+    icon: "ph:magic-wand-bold",
+    link: "https://github.com/Utility-Gods/fillo",
   },
   {
-    title: "Go HTMX Templates",
+    title: "Go HTMX Template",
     description:
-      "Production-ready Go templates featuring HTMX, Templ, Echo, and Tailwind CSS for building modern web applications.",
+      "Production-ready starter template with Go Echo, HTMX, Templ, and Tailwind CSS for building modern web applications.",
     icon: "ph:code-bold",
     link: "https://github.com/Utility-Gods/go-htmx-templ-echo-air-tailwind",
   },
   {
-    title: "PhotoCaml App in OCaml with Dream",
-    description: "PhotoCaml App in OCaml with Dream",
-    icon: "ph:camera-bold",
-    link: "https://github.com/Utility-Gods/photocaml",
+    title: "FastAPI HTMX Template",
+    description:
+      "Full-stack Python starter with FastAPI, HTMX, Postgres, and Tailwind CSS. Includes authentication and modern tooling.",
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/python-htmx-postgres-template",
+  },
+  {
+    title: "SvelteKit Starter",
+    description:
+      "Modern SvelteKit template with shadcn-svelte components and Tailwind CSS for rapid application development.",
+    icon: "ph:code-bold",
+    link: "https://github.com/Utility-Gods/sveltekit-starter",
+  },
+  {
+    title: "Node Sitemap CLI",
+    description:
+      "Command-line tool for generating XML sitemaps for web applications. Published on npm.",
+    icon: "ph:tree-structure-bold",
+    link: "https://github.com/Utility-Gods/node-sitemap-cli",
   },
 ];
 ---
@@ -82,17 +68,16 @@ const features = [
 <div class="mt-16 md:mt-0">
   <h2
     class="text-4xl lg:text-5xl font-bold lg:tracking-tight text-red-500] text-center">
-    Featured Projects
+    Featured Work
   </h2>
   <p class="text-lg mt-4 text-gray-600 text-center max-w-2xl mx-auto">
-    From production applications to developer templates, we create tools and
-    solutions that power modern web development.
+    Our main products, experiments, and starter templates for modern web development.
   </p>
 </div>
 
 <!-- Main Products Section -->
 <div class="mb-16">
-  <h3 class="text-xl font-semibold text-gray-800 mb-8 text-center">Our Flagship Products</h3>
+  <h3 class="text-xl font-semibold text-gray-800 mb-8 text-center">Main Products</h3>
   <div class="grid sm:grid-cols-2 gap-8 mb-16">
     {
       features.filter(item => item.isMainProduct).map((item) => (

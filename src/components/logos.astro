@@ -33,27 +33,45 @@ const logos = [
 ];
 ---
 
-<div class="mt-16">
+<div class="mt-24 mb-16">
   <div class="mx-auto max-w-6xl px-4 lg:px-6">
-    <div class="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 lg:grid-cols-10 gap-8 items-center justify-items-center py-12">
-      {logos.map((logo) => (
-        <div class="w-16 h-16 flex items-center justify-center">
-          <img
-            src={logo.src}
-            alt={logo.alt}
-            class="max-w-full max-h-full hover:scale-110 transition-transform object-contain"
-          />
-        </div>
-      ))}
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h3 class="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">
+        Technology Stack
+      </h3>
+      <p class="text-slate-600 text-sm">
+        Modern tools and frameworks we work with
+      </p>
+    </div>
+
+    <!-- Logos Grid -->
+    <div class="relative overflow-hidden">
+      <!-- Subtle gradient overlay on edges -->
+      <div class="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
+
+      <div class="flex flex-wrap items-center justify-center gap-6 py-8 px-4">
+        {logos.map((logo) => (
+          <div class="group w-14 h-14 flex items-center justify-center rounded-lg hover:bg-slate-50 transition-all duration-300 p-2 flex-shrink-0">
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              class="max-w-full max-h-full object-contain opacity-40 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+              title={logo.alt}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   </div>
 </div>
 
 <style>
   [astro-icon] {
-    color: #4b5563;
+    color: #94a3b8;
   }
   [astro-icon]:hover {
-    color: #111827;
+    color: #475569;
   }
 </style>

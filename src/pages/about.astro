@@ -1,157 +1,151 @@
 ---
-import { getCollection } from "astro:content";
 import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/container.astro";
 import Sectionhead from "@components/sectionhead.astro";
 
-// Filter team entries with 'draft: false' & date before current date
-const publishedTeamMembers = await getCollection("team", ({ data }) => {
-  return !data.draft && data.publishDate < new Date();
-});
+const teamMembers = [
+  {
+    name: "Siddharth",
+    title: "Founder & Developer",
+    avatar: "/team/sid.jpeg",
+    bio: "Software engineer passionate about building practical tools and solving real problems with code. Based in India, focused on creating solutions that work.",
+    links: [
+      {
+        name: "GitHub",
+        url: "https://github.com/siddarthvader",
+        icon: "ph:github-logo-bold",
+      },
+      {
+        name: "Personal Website",
+        url: "https://siddharthjain.in",
+        icon: "ph:globe-bold",
+      },
+    ],
+  },
+];
 ---
 
 <Layout title="About">
   <Container>
     <Sectionhead>
-      <Fragment slot="title"
-        >About <span class="text-red-500">Utility Gods</span></Fragment
-      >
+      <Fragment slot="title">Who We Are</Fragment>
       <Fragment slot="desc"
-        >Building developer-first tools and solutions with a focus on open
-        source innovation and technical excellence.</Fragment
+        >Our story, our values, and the people behind Utility Gods.</Fragment
       >
     </Sectionhead>
 
-    <div class="flex flex-col gap-12 items-center max-w-6xl mx-auto">
-      <!-- Main Products -->
-      <div class="grid md:grid-cols-2 gap-8 mt-8 w-full">
-        <div
-          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
-          <div class="mb-4">
-            <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
-              <Icon name="ph:database-bold" class="w-8 h-8" />
-            </span>
-          </div>
-          <h3 class="text-2xl font-semibold mb-3">OrangeGas CMS</h3>
-          <p class="text-slate-600 mb-4">
-            A general-purpose CMS that empowers the way you create and manage
-            content. Build collections, blogs, and rich text content with ease.
+    <div class="max-w-6xl mx-auto mt-12 mb-20">
+      <div class="grid lg:grid-cols-3 gap-8 pb-12">
+        <!-- Left Column: About Us -->
+        <div class="lg:col-span-2">
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">About Us</h2>
+          <p class="text-slate-600 leading-relaxed mb-4">
+            Utility Gods is a software development agency based in Jaipur, India. We build
+            web applications, internal tools, and SaaS products for clients, and we also
+            work on our own products like PhotoShip and OrangeGas.
           </p>
-          <a
-            href="https://orangegas.utilitygods.com"
-            class="text-red-500 hover:text-red-600 inline-flex items-center gap-1">
-            Learn more <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
-          </a>
-        </div>
-
-        <div
-          class="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
-          <div class="mb-4">
-            <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
-              <Icon name="ph:package-bold" class="w-8 h-8" />
-            </span>
-          </div>
-          <h3 class="text-2xl font-semibold mb-3">Developer Tools</h3>
-          <p class="text-slate-600 mb-4">
-            A suite of tools including QR Gods for QR code generation, PhotoShip
-            for image processing, and gottem cli for development workflows.
+          <p class="text-slate-600 leading-relaxed mb-8">
+            We've completed several projects through Upwork with a 100% job success rate.
+            We work with modern tech stacks—Go, Python, TypeScript, React, Svelte—and we
+            share starter templates and tools on GitHub when we can.
           </p>
-          <a
-            href="/services"
-            class="text-red-500 hover:text-red-600 inline-flex items-center gap-1">
-            View all tools <Icon name="ph:arrow-right-bold" class="w-4 h-4" />
-          </a>
-        </div>
-      </div>
 
-      <!-- Template Categories -->
-      <div class="w-full">
-        <h3 class="text-2xl font-bold text-center mb-8">
-          Development Templates
-        </h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div
-            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
-            <div class="mb-4">
-              <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
-                <Icon name="ph:code-bold" class="w-6 h-6" />
-              </span>
+          <!-- Track Record -->
+          <h3 class="text-2xl font-bold text-slate-900 mb-6">Track Record</h3>
+          <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mb-4">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-red-500 mb-1">100%</div>
+                <div class="text-xs text-slate-600">Job Success</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-red-500 mb-1">$70K+</div>
+                <div class="text-xs text-slate-600">Total Earned</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-red-500 mb-1">1,643+</div>
+                <div class="text-xs text-slate-600">Hours Worked</div>
+              </div>
+              <div class="text-center">
+                <div class="text-2xl font-bold text-red-500 mb-1">6+</div>
+                <div class="text-xs text-slate-600">Jobs Done</div>
+              </div>
             </div>
-            <h3 class="text-xl font-semibold mb-2">Web Templates</h3>
-            <p class="text-slate-600">
-              Modern templates for Astro, SvelteKit, and SolidJS with Tailwind
-              and best practices built-in.
-            </p>
-          </div>
-
-          <div
-            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
-            <div class="mb-4">
-              <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
-                <Icon name="ph:terminal-window-bold" class="w-6 h-6" />
-              </span>
+            <div class="text-center pt-4 border-t border-slate-200">
+              <a
+                href="https://www.upwork.com/agencies/utilitygods/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-red-500 hover:text-red-600 text-sm font-medium">
+                <Icon name="ph:arrow-square-out" class="w-4 h-4" />
+                View Upwork Profile
+              </a>
             </div>
-            <h3 class="text-xl font-semibold mb-2">Backend Templates</h3>
-            <p class="text-slate-600">
-              FastAPI, Go Echo, and HTMX templates with modern stack
-              integrations.
-            </p>
-          </div>
-
-          <div
-            class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all border border-slate-200">
-            <div class="mb-4">
-              <span class="inline-block p-3 bg-red-50 text-red-500 rounded-lg">
-                <Icon name="ph:brain-bold" class="w-6 h-6" />
-              </span>
-            </div>
-            <h3 class="text-xl font-semibold mb-2">Full-Stack Starters</h3>
-            <p class="text-slate-600">
-              Complete setups with databases, authentication, and modern UI
-              frameworks.
-            </p>
           </div>
         </div>
-      </div>
 
-      <!-- GitHub Stats -->
-      <div class="w-full text-center">
-        <h3 class="text-2xl font-bold mb-6">Our Impact</h3>
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="bg-slate-50 p-6 rounded-xl">
-            <div class="text-3xl font-black text-red-500 mb-2">9</div>
-            <div class="text-slate-600 font-medium">Template Repositories</div>
-          </div>
-          <div class="bg-slate-50 p-6 rounded-xl">
-            <div class="text-3xl font-black text-red-500 mb-2">4</div>
-            <div class="text-slate-600 font-medium">Core Products</div>
-            <div class="text-sm text-slate-500 mt-1">
-              OrangeGas, gottem cli, QR Gods, PhotoShip
+        <!-- Right Column: Team -->
+        <div>
+          <h2 class="text-3xl font-bold text-slate-900 mb-6">The Team</h2>
+          {teamMembers.map((member) => (
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-slate-200">
+              <div class="w-32 h-32 mx-auto mb-4">
+                <Image
+                  src={member.avatar}
+                  alt={member.name}
+                  width={128}
+                  height={128}
+                  class="w-full h-full object-cover rounded-full shadow-lg"
+                />
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-1 text-center">
+                {member.name}
+              </h3>
+              <p class="text-red-500 font-medium mb-4 text-center text-sm">{member.title}</p>
+              <p class="text-slate-600 mb-4 text-sm leading-relaxed">{member.bio}</p>
+
+              <div class="flex flex-col gap-2">
+                {member.links.map((link) => (
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex items-center gap-2 bg-slate-100 px-3 py-2 rounded-lg hover:bg-slate-200 transition-colors text-slate-700 text-sm font-medium justify-center">
+                    <Icon name={link.icon} class="w-4 h-4" />
+                    {link.name}
+                  </a>
+                ))}
+              </div>
             </div>
-          </div>
-          <div class="bg-slate-50 p-6 rounded-xl">
-            <div class="text-3xl font-black text-red-500 mb-2">100%</div>
-            <div class="text-slate-600 font-medium">Open Source</div>
-            <div class="text-sm text-slate-500 mt-1">MIT & GPL Licensed</div>
-          </div>
+          ))}
         </div>
       </div>
 
       <!-- CTA -->
-      <div class="w-full text-center flex gap-4 justify-center">
-        <a
-          href="/services"
-          class="inline-flex items-center gap-2 px-6 py-3 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors">
-          <Icon name="ph:rocket-bold" class="w-5 h-5" />
-          Explore Our Services
-        </a>
-        <a
-          href="https://github.com/Utility-Gods"
-          class="inline-flex items-center gap-2 px-6 py-3 text-red-500 border-2 border-red-500 rounded-lg hover:bg-red-50 transition-colors">
-          <Icon name="ph:github-logo-bold" class="w-5 h-5" />
-          View Templates
-        </a>
+      <div class="text-center pt-12">
+        <h3 class="text-2xl font-bold text-slate-900 mb-4">
+          Let's Build Something Together
+        </h3>
+        <p class="text-slate-600 mb-6 max-w-2xl mx-auto">
+          Whether you need a custom web application, want to discuss a product idea,
+          or just want to say hi—we'd love to hear from you.
+        </p>
+        <div class="flex gap-4 justify-center">
+          <a
+            href="/contact"
+            class="inline-flex items-center gap-2 px-6 py-3 text-white bg-red-500 rounded-lg hover:bg-red-600 transition-colors">
+            <Icon name="ph:envelope-bold" class="w-5 h-5" />
+            Get in Touch
+          </a>
+          <a
+            href="/services"
+            class="inline-flex items-center gap-2 px-6 py-3 text-red-500 border-2 border-red-500 rounded-lg hover:bg-red-50 transition-colors">
+            <Icon name="ph:rocket-bold" class="w-5 h-5" />
+            View Services
+          </a>
+        </div>
       </div>
     </div>
   </Container>
