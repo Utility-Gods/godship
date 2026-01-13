@@ -207,6 +207,13 @@ declare module 'astro:content' {
   collection: "blog";
   data: InferEntrySchema<"blog">
 } & { render(): Render[".md"] };
+"photoship-update-jan-2026.md": {
+	id: "photoship-update-jan-2026.md";
+  slug: "photoship-update-jan-2026";
+  body: string;
+  collection: "blog";
+  data: InferEntrySchema<"blog">
+} & { render(): Render[".md"] };
 };
 "team": {
 "sid.md": {
